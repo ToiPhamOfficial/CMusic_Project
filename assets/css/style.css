@@ -8,24 +8,37 @@
 /* --- 1. BASE: MẶC ĐỊNH CHO DESKTOP (1920px / 1440px) --- */
 :root {
     /* === SPACING (Hệ thống 8pt Grid của bạn) === */
-    --space-xs:  4px;  /* Khoảng cách cực nhỏ (icon text) */
-    --space-sm:  8px;  /* Gap nhỏ */
-    --space-md:  16px; /* Padding tiêu chuẩn cho Button/Input */
-    --space-lg:  24px; /* Padding tiêu chuẩn cho Card/Section */
-    --space-xl:  32px; /* Gap lớn giữa các khu vực */
-    --space-2xl: 48px; /* Padding lề màn hình (Container) */
-    
+    --space-xs: 4px;
+    /* Khoảng cách cực nhỏ (icon text) */
+    --space-sm: 8px;
+    /* Gap nhỏ */
+    --space-md: 16px;
+    /* Padding tiêu chuẩn cho Button/Input */
+    --space-lg: 24px;
+    /* Padding tiêu chuẩn cho Card/Section */
+    --space-xl: 32px;
+    /* Gap lớn giữa các khu vực */
+    --space-2xl: 48px;
+    /* Padding lề màn hình (Container) */
+
     /* === TYPOGRAPHY (Cỡ chữ) === */
-    --fs-label:  14px; /* Caption, meta data */
-    --fs-body:   16px; /* Body text chuẩn Desktop */
-    --fs-h3:     20px; /* Tiêu đề list, tên bài hát */
-    --fs-h2:     24px; /* Tiêu đề section */
-    --fs-h1:     32px; /* Tiêu đề trang chính */
+    --fs-label: 14px;
+    /* Caption, meta data */
+    --fs-body: 16px;
+    /* Body text chuẩn Desktop */
+    --fs-h3: 20px;
+    /* Tiêu đề list, tên bài hát */
+    --fs-h2: 24px;
+    /* Tiêu đề section */
+    --fs-h1: 32px;
+    /* Tiêu đề trang chính */
 
     /* === LAYOUT === */
-    --container-max-width: 2000px; /* Giới hạn chiều rộng nội dung */
-    --radius-md: 5px;  
-    --radius-lg: 12px;  /* Bo góc card */
+    --container-max-width: 2000px;
+    /* Giới hạn chiều rộng nội dung */
+    --radius-md: 5px;
+    --radius-lg: 12px;
+    /* Bo góc card */
 
     /* === COLOR THEME === */
     --bg-color: #17161b;
@@ -42,19 +55,47 @@
 @media (max-width: 1024px) {
     :root {
         /* Spacing: Giữ nguyên các cái nhỏ, chỉ giảm các cái lớn */
-        --space-lg:  20px; /* 24px -> 20px cho gọn hơn chút */
-        --space-xl:  24px; /* 32px -> 24px */
-        --space-2xl: 24px; /* Lề màn hình thu hẹp lại để tiết kiệm đất */
-        
+        --space-lg: 20px;
+        /* 24px -> 20px cho gọn hơn chút */
+        --space-xl: 24px;
+        /* 32px -> 24px */
+        --space-2xl: 24px;
+        /* Lề màn hình thu hẹp lại để tiết kiệm đất */
+
         /* Font: Vẫn giữ nguyên body 16px cho dễ đọc trên Tablet */
-        --fs-h1:     28px; /* Giảm tiêu đề to một chút */
+        --fs-h1: 28px;
+        /* Giảm tiêu đề to một chút */
     }
 
     .sidebar {
-        width: 200px;
+        width: auto;
+    }
+
+    .sidebar .logo {
+        display: none;
+    }
+
+    .nav-title {
+        display: none;
     }
 
     .nav-item a span {
+        display: none;
+    }
+
+    .top-header .header-bg {
+        display: none;
+    }
+
+    .top-header .banner {
+        display: none;
+    }
+
+    .header-nav .tabs {
+        display: none;
+    }
+
+    .container .right-section {
         display: none;
     }
 }
@@ -63,18 +104,31 @@
 @media (max-width: 768px) {
     :root {
         /* Spacing: Chế độ Compact (Đậm đặc) */
-        --space-md:  12px; /* 16px -> 12px (Padding nút/input nhỏ lại) */
-        --space-lg:  16px; /* 24px -> 16px (Padding card nhỏ lại) */
-        --space-2xl: 16px; /* Lề màn hình: 16px là chuẩn mobile */
-        
-        /* Font: Giảm size body để hiển thị được nhiều chữ hơn */
-        --fs-label:  12px; /* 14px -> 12px */
-        --fs-body:   14px; /* 16px -> 14px (Quan trọng) */
-        --fs-h3:     16px; /* 20px -> 16px */
-        --fs-h2:     20px; /* 24px -> 20px */
-        --fs-h1:     24px; /* 32px -> 24px */
+        --space-md: 12px;
+        /* 16px -> 12px (Padding nút/input nhỏ lại) */
+        --space-lg: 16px;
+        /* 24px -> 16px (Padding card nhỏ lại) */
+        --space-2xl: 16px;
+        /* Lề màn hình: 16px là chuẩn mobile */
 
-        --radius-lg: 6px;  /* Bo góc card nhỏ lại cho phù hợp */
+        /* Font: Giảm size body để hiển thị được nhiều chữ hơn */
+        --fs-label: 12px;
+        /* 14px -> 12px */
+        --fs-body: 14px;
+        /* 16px -> 14px (Quan trọng) */
+        --fs-h3: 16px;
+        /* 20px -> 16px */
+        --fs-h2: 20px;
+        /* 24px -> 20px */
+        --fs-h1: 24px;
+        /* 32px -> 24px */
+
+        --radius-lg: 6px;
+        /* Bo góc card nhỏ lại cho phù hợp */
+    }
+
+    .sidebar {
+        display: none !important;
     }
 }
 
@@ -93,7 +147,7 @@ body {
 
 /* Sidebar */
 .sidebar {
-    width: 250px;
+    max-width: 250px;
     background: linear-gradient(to bottom, var(--sidebar-bg-start) 20%, var(--sidebar-bg-end));
     padding: 24px;
     display: flex;
@@ -259,7 +313,8 @@ body {
 .search-bar {
     width: 250px;
     height: 55px;
-    background-color: #171717; /* neutral-900 approx */
+    background-color: #171717;
+    /* neutral-900 approx */
     border: 1px solid #3a3b3b;
     border-radius: 10px;
     display: flex;
@@ -421,7 +476,8 @@ body {
     display: flex;
     gap: 20px;
     padding: 0 24px;
-    height: 100vh; /* Remaining height */
+    height: 100vh;
+    /* Remaining height */
     width: 100%;
     max-width: var(--container-max-width);
     overflow-y: auto;
@@ -571,7 +627,8 @@ body {
 
 .song-info .song-artist {
     font-size: 14px;
-    color: white; /* Figma says white for artist in chart list */
+    color: white;
+    /* Figma says white for artist in chart list */
 }
 
 .chart-right {
@@ -604,7 +661,8 @@ body {
 
 /* Right Section (Player) */
 .right-section {
-    width: 300px; /* Estimated width */
+    width: 300px;
+    /* Estimated width */
     flex-shrink: 0;
 }
 
