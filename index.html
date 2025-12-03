@@ -8,269 +8,436 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Sans+Pro:wght@600&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
     <div class="app">
         <!-- Sidebar -->
-        <div class="sidebar">
+        <aside class="sidebar">
+            <!-- Logo -->
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="https://www.figma.com/api/mcp/asset/8a2929ed-588a-46e2-8c06-e758c75eaf66" alt="Logo">
+                </div>
+                <span class="logo-text">MUSIC</span>
+            </div>
 
-        </div>
-        <!-- Navbar và nội dung chính của web-->
-        <div class="mainpage">
-            <div class="mainpage__header">
-                <!-- Navbar -->
-                <div class="mainpage__navbar">
-                    <div class="mainpage__chips">
-                        <div class="mainpage__chip">MUSIC</div>
-                        <div class="mainpage__chip">PODCAST</div>
-                        <div class="mainpage__chip">LIVE</div>
+            <div class="sidebar-nav">
+                <div class="divider"></div>
+
+                <!-- Menu -->
+                <div class="nav-group">
+                    <h3 class="nav-title">MENU</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item active">
+                            <a href="#" class="nav-link">
+                                <img src="https://www.figma.com/api/mcp/asset/aeddb2fc-3ae8-445b-8638-babdccf0db05"
+                                    alt="Khám phá">
+                                <span>Khám phá</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <img src="https://www.figma.com/api/mcp/asset/62c96bda-d8d1-4bcf-ba30-db65260a499a"
+                                    alt="Album">
+                                <span>Album</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <img src="https://www.figma.com/api/mcp/asset/6b42a836-7ea9-4942-a165-59d0942e5284"
+                                    alt="Nghệ sĩ">
+                                <span>Nghệ sĩ</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <img src="https://www.figma.com/api/mcp/asset/9510ba0c-0221-4562-9283-712051a9e654"
+                                    alt="Thể loại">
+                                <span>Thể loại</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="divider"></div>
+
+                <!-- Library -->
+                <div class="nav-group">
+                    <h3 class="nav-title">THƯ VIỆN</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <img src="https://www.figma.com/api/mcp/asset/983486ec-9f4c-4bd5-b266-76f790ca9c1b"
+                                    alt="Gần đây">
+                                <span>Gần đây</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <img src="https://www.figma.com/api/mcp/asset/9a9ebcdf-73c7-4e6e-8e69-c78989c85387"
+                                    alt="Album">
+                                <span>Album</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <img src="https://www.figma.com/api/mcp/asset/e5d6fbfb-d796-4626-9f02-5c6dc6391b4e"
+                                    alt="Yêu thích">
+                                <span>Yêu thích</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <img src="https://www.figma.com/api/mcp/asset/2ac803db-210a-4238-b083-b1f70d6ffd88"
+                                    alt="Lưu trữ">
+                                <span>Lưu trữ</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="divider"></div>
+
+                <!-- Playlist -->
+                <div class="nav-group">
+                    <h3 class="nav-title">DANH SÁCH PHÁT</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <img src="https://www.figma.com/api/mcp/asset/1284d5b3-25ae-405e-95f1-6239562e50ad"
+                                    alt="Tạo mới">
+                                <span>Tạo mới</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <img src="https://www.figma.com/api/mcp/asset/d88018fc-d39d-484d-930a-b00c9f6cfe70"
+                                    alt="Lofi Chill">
+                                <span>Lofi Chill</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <img src="https://www.figma.com/api/mcp/asset/d88018fc-d39d-484d-930a-b00c9f6cfe70"
+                                    alt="Hot Phonk">
+                                <span>Hot Phonk</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <img src="https://www.figma.com/api/mcp/asset/ff80ee18-dfab-4403-9023-c2a636d8b37a"
+                                    alt="Tất cả">
+                                <span>Tất cả</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="top-header">
+                <div class="header-bg">
+                    <img src="assets/img/hit-songs-bg/hit1.png" alt="Header BG">
+                </div>
+
+                <div class="header-nav">
+                    <div class="tabs">
+                        <div class="tab-item active">MUSIC</div>
+                        <div class="tab-item">PODCAST</div>
+                        <div class="tab-item">LIVE</div>
                     </div>
-                    <div class="mainpage__search">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <span>Tìm kiếm bài hát</span>
+
+                    <div class="search-bar">
+                        <span class="material-icons-round">
+                            search
+                        </span>
+                        <input type="text" placeholder="Tìm kiếm bài hát">
                     </div>
-                    <div class="mainpage__userbar">
-                        <div class="mainpage__notification">
-                            <i class="fa-solid fa-bell"></i>
-                            <div class="mainpage__notification-badge"></div>
+
+                    <div class="user-actions">
+                        <div class="notification">
+                            <span class="material-icons-round">
+                                notifications
+                            </span>
+                            <img class="dot"
+                                src="https://www.figma.com/api/mcp/asset/9fa4f572-edb5-4272-859a-cff504174b9d"
+                                alt="Dot">
                         </div>
-                        <i class="fa-solid fa-gear"></i>
-                        <div class="mainpage__miniuser">
-                            <div class="mainpage__avatar">
-                                <img src="assets/img/avatar.png" alt="avatar">
+                        <div class="settings">
+                            <span class="material-icons-round">
+                                settings
+                            </span>
+                        </div>
+                        <div class="user-profile">
+                            <div class="avatar">
+                                <img src="https://www.figma.com/api/mcp/asset/7babab39-43cd-4f00-98c1-ac88adac20c1"
+                                    alt="Avatar">
                             </div>
-                            <span class="mainpage__username">Hoàng Quân</span>
+                            <span class="username">Hoàng Quân</span>
                         </div>
                     </div>
                 </div>
-                <!-- Những bài hát hot -->
-                <div class="mainpage__hit-songs">
-                    <span>Bản Hit Mới Nhất</span>
-                    <div class="mainpage__hit-info">
-                        <span class="mainpage__song-name">In My Feelings</span>
-                        <div class="mainpage__singer-listening">
-                            <span class="mainpage__singer-name">Camila Cabello</span>
-                            <span class="mainpage__listening-count">63Tr luợt nghe</span>
+
+                <div class="banner">
+                    <h3 class="banner-subtitle">Bản Hit Mới Nhất</h3>
+                    <div class="banner-content">
+                        <h1 class="banner-title">In My Feelings</h1>
+                        <div class="banner-info">
+                            <span class="artist">Camila Cabello</span>
+                            <span class="views">63Tr lượt nghe</span>
                         </div>
                     </div>
-                    <div class="mainpage__hit-actions">
-                        <button class="mainpage__play-button">Phát ngay</button>
-                        <div class="mainpage__favourite">
-                            <i class="fa-solid fa-heart"></i>
+                    <div class="banner-actions">
+                        <button class="btn-play">Phát ngay</button>
+                        <button class="btn-fav">
+                            <img src="https://www.figma.com/api/mcp/asset/d65cfc55-665e-4585-bee3-1424b1812761"
+                                alt="Fav">
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Container -->
+            <div class="container">
+                <div class="left-section">
+                    <!-- Top Artists -->
+                    <section class="section-box top-artists">
+                        <div class="section-header">
+                            <h2>Top nghệ sĩ</h2>
+                            <a href="#" class="view-all">Tất cả</a>
+                        </div>
+                        <div class="artist-list">
+                            <div class="artist-card">
+                                <img src="https://www.figma.com/api/mcp/asset/f4cf5d7e-e854-43eb-a073-26d2011ed91e"
+                                    alt="Alan Walker">
+                                <div class="artist-info">
+                                    <p class="name">Alan Walker</p>
+                                    <p class="listeners">970Tr lượt nghe</p>
+                                </div>
+                            </div>
+                            <div class="artist-card">
+                                <img src="https://www.figma.com/api/mcp/asset/a4da7324-a9a9-404c-aa1b-e687e953f1eb"
+                                    alt="Bruno Mars">
+                                <div class="artist-info">
+                                    <p class="name">Bruno Mars</p>
+                                    <p class="listeners">275Tr lượt nghe</p>
+                                </div>
+                            </div>
+                            <div class="artist-card">
+                                <img src="https://www.figma.com/api/mcp/asset/d252e589-257a-4a81-a168-0c01c4004d45"
+                                    alt="Sơn Tùng MTP">
+                                <div class="artist-info">
+                                    <p class="name">Sơn Tùng MTP</p>
+                                    <p class="listeners">134Tr lượt nghe</p>
+                                </div>
+                            </div>
+                            <div class="artist-card">
+                                <img src="https://www.figma.com/api/mcp/asset/72131549-40e1-499f-92eb-9f96379c3da6"
+                                    alt="Soobin Hoàng Sơn">
+                                <div class="artist-info">
+                                    <p class="name">Soobin Hoàng Sơn</p>
+                                    <p class="listeners">80Tr lượt nghe</p>
+                                </div>
+                            </div>
+                            <div class="artist-card">
+                                <img src="https://www.figma.com/api/mcp/asset/026fbca9-640a-494a-a332-4ab64b06e098"
+                                    alt="Drake">
+                                <div class="artist-info">
+                                    <p class="name">Drake</p>
+                                    <p class="listeners">75Tr lượt nghe</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Genres -->
+                    <section class="section-box genres">
+                        <div class="section-header">
+                            <h2>Thể loại</h2>
+                            <a href="#" class="view-all">Tất cả</a>
+                        </div>
+                        <div class="genre-grid">
+                            <div class="genre-item" style="background-color: #a49a85;">Electro Pop</div>
+                            <div class="genre-item" style="background-color: #a34c33;">Altermative Indie</div>
+                            <div class="genre-item" style="background-color: #0c4045;">Hip Hop</div>
+                            <div class="genre-item" style="background-color: #466a89;">Dance Beat</div>
+                            <div class="genre-item" style="background-color: #a77895;">Classical Period</div>
+                            <div class="genre-item" style="background-color: #5647a5;">Hip Hop Rap</div>
+                        </div>
+                    </section>
+
+                    <!-- Charts -->
+                    <section class="section-box charts">
+                        <div class="section-header">
+                            <h2>Bảng xếp hạng</h2>
+                            <a href="#" class="view-all">Tất cả</a>
+                        </div>
+                        <div class="chart-list">
+                            <!-- Item 1 -->
+                            <div class="chart-item">
+                                <div class="chart-left">
+                                    <span class="rank">01</span>
+                                    <img src="https://www.figma.com/api/mcp/asset/7cd60fd9-1ec8-4230-9406-db7c3ec7fd83"
+                                        alt="Kamin">
+                                    <div class="song-info">
+                                        <p class="song-title">Kamin</p>
+                                        <p class="song-artist">Emin ft. JONY</p>
+                                    </div>
+                                </div>
+                                <div class="chart-right">
+                                    <span class="duration">3:43</span>
+                                    <button class="btn-icon"><img
+                                            src="https://www.figma.com/api/mcp/asset/44748275-c192-431d-bea9-a45db56c6053"
+                                            alt="Play"></button>
+                                    <button class="btn-icon"><img
+                                            src="https://www.figma.com/api/mcp/asset/1284d5b3-25ae-405e-95f1-6239562e50ad"
+                                            alt="Add"></button>
+                                </div>
+                            </div>
+                            <!-- Item 2 -->
+                            <div class="chart-item">
+                                <div class="chart-left">
+                                    <span class="rank">02</span>
+                                    <img src="https://www.figma.com/api/mcp/asset/68231e5b-1d9e-411f-8129-b89115c563cf"
+                                        alt="Die With A Smile">
+                                    <div class="song-info">
+                                        <p class="song-title">Die With A Smile</p>
+                                        <p class="song-artist">Lady Gaga, Bruno Mars</p>
+                                    </div>
+                                </div>
+                                <div class="chart-right">
+                                    <span class="duration">4:11</span>
+                                    <button class="btn-icon"><img
+                                            src="https://www.figma.com/api/mcp/asset/44748275-c192-431d-bea9-a45db56c6053"
+                                            alt="Play"></button>
+                                    <button class="btn-icon"><img
+                                            src="https://www.figma.com/api/mcp/asset/1284d5b3-25ae-405e-95f1-6239562e50ad"
+                                            alt="Add"></button>
+                                </div>
+                            </div>
+                            <!-- Item 3 -->
+                            <div class="chart-item">
+                                <div class="chart-left">
+                                    <span class="rank">03</span>
+                                    <img src="https://www.figma.com/api/mcp/asset/01d5042a-0224-40a3-8b38-718f7e36bacf"
+                                        alt="Đừng Làm Trái Tim Anh Đau">
+                                    <div class="song-info">
+                                        <p class="song-title">Đừng Làm Trái Tim Anh Đau</p>
+                                        <p class="song-artist">Sơn Tùng MTP</p>
+                                    </div>
+                                </div>
+                                <div class="chart-right">
+                                    <span class="duration">5:26</span>
+                                    <button class="btn-icon"><img
+                                            src="https://www.figma.com/api/mcp/asset/44748275-c192-431d-bea9-a45db56c6053"
+                                            alt="Play"></button>
+                                    <button class="btn-icon"><img
+                                            src="https://www.figma.com/api/mcp/asset/1284d5b3-25ae-405e-95f1-6239562e50ad"
+                                            alt="Add"></button>
+                                </div>
+                            </div>
+                            <!-- Item 4 -->
+                            <div class="chart-item">
+                                <div class="chart-left">
+                                    <span class="rank">04</span>
+                                    <img src="https://www.figma.com/api/mcp/asset/42f253ae-e89c-4b2b-9c13-9f6f9c0968da"
+                                        alt="Faded">
+                                    <div class="song-info">
+                                        <p class="song-title">Faded</p>
+                                        <p class="song-artist">Alan Walker</p>
+                                    </div>
+                                </div>
+                                <div class="chart-right">
+                                    <span class="duration">3:33</span>
+                                    <button class="btn-icon"><img
+                                            src="https://www.figma.com/api/mcp/asset/44748275-c192-431d-bea9-a45db56c6053"
+                                            alt="Play"></button>
+                                    <button class="btn-icon"><img
+                                            src="https://www.figma.com/api/mcp/asset/1284d5b3-25ae-405e-95f1-6239562e50ad"
+                                            alt="Add"></button>
+                                </div>
+                            </div>
+                            <!-- Item 5 -->
+                            <div class="chart-item">
+                                <div class="chart-left">
+                                    <span class="rank">05</span>
+                                    <img src="https://www.figma.com/api/mcp/asset/c97a1d35-e6f0-4ac7-b955-ac2c7f949a54"
+                                        alt="Mất Kết Nối">
+                                    <div class="song-info">
+                                        <p class="song-title">Mất Kết Nối</p>
+                                        <p class="song-artist">Dương Domic</p>
+                                    </div>
+                                </div>
+                                <div class="chart-right">
+                                    <span class="duration">3:28</span>
+                                    <button class="btn-icon"><img
+                                            src="https://www.figma.com/api/mcp/asset/44748275-c192-431d-bea9-a45db56c6053"
+                                            alt="Play"></button>
+                                    <button class="btn-icon"><img
+                                            src="https://www.figma.com/api/mcp/asset/1284d5b3-25ae-405e-95f1-6239562e50ad"
+                                            alt="Add"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Right Section (Player) -->
+                <div class="right-section">
+                    <div class="player-container">
+                        <div class="player-header">
+                            <h2>Player</h2>
+                            <button class="btn-icon"><img
+                                    src="https://www.figma.com/api/mcp/asset/db18483c-7312-422a-8b4d-5878fc32541f"
+                                    alt="Down"></button>
+                        </div>
+                        <div class="player-body">
+                            <div class="player-disc">
+                                <img src="https://www.figma.com/api/mcp/asset/d9fc626b-3041-4898-bc9f-bde47efaa68a"
+                                    alt="Sea Of Feelings">
+                            </div>
+                            <div class="player-info">
+                                <h3>Sea Of Feelings</h3>
+                                <p>Lowx</p>
+                            </div>
+                            <div class="player-progress">
+                                <span class="time">1:54</span>
+                                <div class="progress-bar">
+                                    <img src="https://www.figma.com/api/mcp/asset/94929bee-acec-4ffb-9196-da407e62f849"
+                                        alt="Progress">
+                                </div>
+                                <span class="time">02:53</span>
+                            </div>
+                        </div>
+                        <div class="player-controls">
+                            <button class="btn-control"><img
+                                    src="https://www.figma.com/api/mcp/asset/2a3d08e9-cebc-466a-bf89-a7e82af07606"
+                                    alt="Repeat"></button>
+                            <button class="btn-control"><img
+                                    src="https://www.figma.com/api/mcp/asset/c196d924-bb0b-4310-ab13-ffb75d33562e"
+                                    alt="Prev"></button>
+                            <button class="btn-control play"><img
+                                    src="https://www.figma.com/api/mcp/asset/d88018fc-d39d-484d-930a-b00c9f6cfe70"
+                                    alt="Play"></button>
+                            <button class="btn-control"><img
+                                    src="https://www.figma.com/api/mcp/asset/0e19e01f-332d-4f83-b5f7-d8485d400d14"
+                                    alt="Next"></button>
+                            <button class="btn-control"><img
+                                    src="https://www.figma.com/api/mcp/asset/a56e9c2b-9ee8-4c1f-97d6-54601b8f81fd"
+                                    alt="Shuffle"></button>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Nội dung chính -->
-            <div class="mainpage__content">
-                <div class="mainpage__maincontent">
-                    <!-- Top nghệ sĩ -->
-                    <div class="top-artists">
-                        <div class="top-artists__header">
-                            <span>Top nghệ sĩ</span>
-                            <span>Tất cả</span>
-                        </div>
-                        <div class="top-artists__list">
-                            <div class="top-artists__card">
-                                <img src="assets/img/top-artists/alan_walker.png" alt="Alan Walker">
-                                <div class="top-artists__info">
-                                    <span>Alan Walker</span>
-                                    <span>970Tr lượt nghe</span>
-                                </div>
-                            </div>
-                            <div class="top-artists__card">
-                                <img src="assets/img/top-artists/son-tung-mtp.png" alt="Sơn Tùng MTP">
-                                <div class="top-artists__info">
-                                    <span>Sơn Tùng MTP</span>
-                                    <span>100Tr lượt nghe</span>
-                                </div>
-                            </div>
-                            <div class="top-artists__card">
-                                <img src="assets/img/top-artists/alan_walker.png" alt="Alan Walker">
-                                <div class="top-artists__info">
-                                    <span>Alan Walker</span>
-                                    <span>970Tr lượt nghe</span>
-                                </div>
-                            </div>
-                            <div class="top-artists__card">
-                                <img src="assets/img/top-artists/alan_walker.png" alt="Alan Walker">
-                                <div class="top-artists__info">
-                                    <span>Alan Walker</span>
-                                    <span>970Tr lượt nghe</span>
-                                </div>
-                            </div>
-                            <div class="top-artists__card">
-                                <img src="assets/img/top-artists/alan_walker.png" alt="Alan Walker">
-                                <div class="top-artists__info">
-                                    <span>Alan Walker</span>
-                                    <span>970Tr lượt nghe</span>
-                                </div>
-                            </div>
-                            <div class="top-artists__card">
-                                <img src="assets/img/top-artists/alan_walker.png" alt="Alan Walker">
-                                <div class="top-artists__info">
-                                    <span>Alan Walker</span>
-                                    <span>970Tr lượt nghe</span>
-                                </div>
-                            </div>
-                            <div class="top-artists__card">
-                                <img src="assets/img/top-artists/alan_walker.png" alt="Alan Walker">
-                                <div class="top-artists__info">
-                                    <span>Alan Walker</span>
-                                    <span>970Tr lượt nghe</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Thể loại -->
-                    <div class="mainpage__genres">
-                        <div class="mainpage__genres-header">
-                            <span>Thể loại</span>
-                            <span>Tất cả</span>
-                        </div>
-                        <div class="mainpage__genres-list">
-                            <div class="genres__item genres__item--1">Dance Beat</div>
-                            <div class="genres__item genres__item--2">Electro Pop</div>
-                            <div class="genres__item genres__item--3">Alternative Indie</div>
-                            <div class="genres__item genres__item--4">Hip Hop</div>
-                            <div class="genres__item genres__item--5">Classical Period</div>
-                            <div class="genres__item genres__item--6">Hip Hop Rap</div>
-                        </div>
-                    </div>
-                    <!-- Bảng xếp hạng -->
-                    <div class="mainpage__rank">
-                        <div class="mainpage__rank-header">
-                            <span>Bảng xếp hạng</span>
-                            <span>Tất cả</span>
-                        </div>
-                        <div class="mainpage__rank-body">
-                            <div class="mainpage__rank-item">
-                                <div class="mainpage__rank-info">
-                                    <span>01</span>
-                                    <img src="assets/img/rank/1.png" alt="">
-                                    <div class="mainpage__rank-songinfo">
-                                        <span class="mainpage__rank-songname">Blinding Lights</span>
-                                        <span class="mainpage__rank-singer">The Weeknd</span>
-                                    </div>
-                                </div>
-                                <div class="mainpage__rank-actions">
-                                    <span>3:43</span>
-                                    <div class="mainpage__rank-playbtn">
-                                        <i class="fa-solid fa-play"></i>
-                                    </div>
-                                    <i class="fa-solid fa-plus-circle"></i>
-                                </div>
-                            </div>
-                            <div class="mainpage__rank-item">
-                                <div class="mainpage__rank-info">
-                                    <span>01</span>
-                                    <img src="assets/img/rank/1.png" alt="">
-                                    <div class="mainpage__rank-songinfo">
-                                        <span class="mainpage__rank-songname">Blinding Lights</span>
-                                        <span class="mainpage__rank-singer">The Weeknd</span>
-                                    </div>
-                                </div>
-                                <div class="mainpage__rank-actions">
-                                    <span>3:43</span>
-                                    <div class="mainpage__rank-playbtn">
-                                        <i class="fa-solid fa-play"></i>
-                                    </div>
-                                    <i class="fa-solid fa-plus-circle"></i>
-                                </div>
-                            </div>
-                            <div class="mainpage__rank-item">
-                                <div class="mainpage__rank-info">
-                                    <span>01</span>
-                                    <img src="assets/img/rank/1.png" alt="">
-                                    <div class="mainpage__rank-songinfo">
-                                        <span class="mainpage__rank-songname">Blinding Lights</span>
-                                        <span class="mainpage__rank-singer">The Weeknd</span>
-                                    </div>
-                                </div>
-                                <div class="mainpage__rank-actions">
-                                    <span>3:43</span>
-                                    <div class="mainpage__rank-playbtn">
-                                        <i class="fa-solid fa-play"></i>
-                                    </div>
-                                    <i class="fa-solid fa-plus-circle"></i>
-                                </div>
-                            </div>
-                            <div class="mainpage__rank-item">
-                                <div class="mainpage__rank-info">
-                                    <span>01</span>
-                                    <img src="assets/img/rank/1.png" alt="">
-                                    <div class="mainpage__rank-songinfo">
-                                        <span class="mainpage__rank-songname">Blinding Lights</span>
-                                        <span class="mainpage__rank-singer">The Weeknd</span>
-                                    </div>
-                                </div>
-                                <div class="mainpage__rank-actions">
-                                    <span>3:43</span>
-                                    <div class="mainpage__rank-playbtn">
-                                        <i class="fa-solid fa-play"></i>
-                                    </div>
-                                    <i class="fa-solid fa-plus-circle"></i>
-                                </div>
-                            </div>
-                            <div class="mainpage__rank-item">
-                                <div class="mainpage__rank-info">
-                                    <span>01</span>
-                                    <img src="assets/img/rank/1.png" alt="">
-                                    <div class="mainpage__rank-songinfo">
-                                        <span class="mainpage__rank-songname">Blinding Lights</span>
-                                        <span class="mainpage__rank-singer">The Weeknd</span>
-                                    </div>
-                                </div>
-                                <div class="mainpage__rank-actions">
-                                    <span>3:43</span>
-                                    <div class="mainpage__rank-playbtn">
-                                        <i class="fa-solid fa-play"></i>
-                                    </div>
-                                    <i class="fa-solid fa-plus-circle"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mainpage__player">
-                    <!-- Player content will go here -->
-                    <div class="mainpage__player-header">
-                        <span>Player</span>
-                        <i class="fa-solid fa-list"></i>
-                    </div>
-                    <div class="mainpage__player-track">
-                        <div class="mainpage__player-track-info">
-                            <img src="assets/img/rank/1.png" alt="Song Image">
-                            <div class="mainpage__player-songdetails">
-                                <span class="mainpage__player-songname">Save Your Tears</span>
-                                <span class="mainpage__player-singername">The Weekend</span>
-                            </div>
-                        </div>
-                        <div class="mainpage__player-track-progress">
-                            <span class="mainpage__player-current-time">1:15</span>
-                            <input type="range" min="0" max="100" value="30" class="mainpage__player-progress-bar">
-                            <span class="mainpage__player-total-time">3:35</span>
-                        </div>
-                    </div>
-                    <div class="mainpage__player-controls">
-                        <i class="fa-solid fa-repeat"></i>
-                        <i class="fa-solid fa-backward-step"></i>
-                        <div class="mainpage__player-playbtn">
-                            <i class="fa-solid fa-play-circle"></i>
-                        </div>
-                        <i class="fa-solid fa-forward-step"></i>
-                        <i class="fa-solid fa-shuffle"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </main>
     </div>
 </body>
 
