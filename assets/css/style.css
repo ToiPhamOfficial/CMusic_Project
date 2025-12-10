@@ -7,34 +7,26 @@
 
 /* --- 1. BASE: MẶC ĐỊNH CHO DESKTOP (1920px / 1440px) --- */
 :root {
-    /* === SPACING (Hệ thống 8pt Grid của bạn) === */
-    --space-xs: 4px;
-    /* Khoảng cách cực nhỏ (icon text) */
-    --space-sm: 8px;
-    /* Gap nhỏ */
-    --space-md: 16px;
-    /* Padding tiêu chuẩn cho Button/Input */
-    --space-lg: 24px;
-    /* Padding tiêu chuẩn cho Card/Section */
-    --space-xl: 32px;
-    /* Gap lớn giữa các khu vực */
-    --space-2xl: 48px;
-    /* Padding lề màn hình (Container) */
+    /* Đảm bảo trình duyệt gốc là 16px. 16px * 62.5% = 10px */
+    font-size: 62.5%; 
 
-    /* === TYPOGRAPHY (Cỡ chữ) === */
-    --fs-label: 14px;
-    /* Caption, meta data */
-    --fs-body: 16px;
-    /* Body text chuẩn Desktop */
-    --fs-h3: 20px;
-    /* Tiêu đề list, tên bài hát */
-    --fs-h2: 24px;
-    /* Tiêu đề section */
-    --fs-h1: 32px;
-    /* Tiêu đề trang chính */
+    /* === SPACING (Hệ thống 8pt Grid đã chuyển sang REM) === */
+    --space-xs: 0.4rem;  /* 4px */
+    --space-sm: 0.8rem;  /* 8px */
+    --space-md: 1.6rem;  /* 16px */
+    --space-lg: 2.4rem;  /* 24px */
+    --space-xl: 3.2rem;  /* 32px */
+    --space-2xl: 4.8rem; /* 48px */
+
+    /* === TYPOGRAPHY (Cỡ chữ đã chuyển sang REM) === */
+    --fs-label: 1.4rem;  /* 14px */
+    --fs-body: 1.6rem;   /* 16px */
+    --fs-h3: 2.0rem;     /* 20px */
+    --fs-h2: 2.4rem;     /* 24px */
+    --fs-h1: 3.2rem;     /* 32px */
 
     /* === LAYOUT === */
-    --container-max-width: 2000px;
+    --container-max-width: 1200px;
     /* Giới hạn chiều rộng nội dung */
     --radius-md: 5px;
     --radius-lg: 12px;
@@ -68,7 +60,7 @@
     }
 
     .sidebar {
-        width: auto;
+        width: auto !important;
     }
 
     .sidebar .logo {
@@ -79,7 +71,7 @@
         display: none;
     }
 
-    .nav-item a span {
+    .nav-item a span:last-child{
         display: none;
     }
 
@@ -100,8 +92,8 @@
     }
 }
 
-/* --- 3. MOBILE (Điện thoại) - Max-width: 768px --- */
-@media (max-width: 768px) {
+/* --- 3. MOBILE (Điện thoại) - Max-width: 576px --- */
+@media (max-width: 576px) {
     :root {
         /* Spacing: Chế độ Compact (Đậm đặc) */
         --space-md: 12px;
@@ -130,6 +122,32 @@
     .sidebar {
         display: none !important;
     }
+
+    .header-nav {
+        justify-content: flex-end !important;
+    }
+
+    .user-profile {
+        width: auto;
+    }
+
+    .user-profile .username {
+        display: none;
+    }
+
+    .search-bar {
+        width: auto !important;
+        background-color: transparent !important;
+        border: none !important;
+    }
+
+    .search-bar input {
+        display: none;
+    }
+
+    .chart-right {
+        display: none !important;
+    }
 }
 
 body {
@@ -147,21 +165,19 @@ body {
 
 /* Sidebar */
 .sidebar {
-    max-width: 250px;
+    width: 250px;
     background: linear-gradient(to bottom, var(--sidebar-bg-start) 20%, var(--sidebar-bg-end));
-    padding: 24px;
+    padding: var(--space-lg);
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: var(--space-lg);
     flex-shrink: 0;
     overflow-y: auto;
 }
 
 .logo {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+    gap: var(--space-sm);
 }
 
 .logo-icon {
@@ -177,7 +193,7 @@ body {
 .logo-text {
     font-family: "Source Sans Pro", sans-serif;
     font-weight: 600;
-    font-size: 32px;
+    font-size: var(--fs-h1);
     color: var(--accent-color);
     line-height: 1;
 }
@@ -185,7 +201,7 @@ body {
 .sidebar-nav {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: var(--space-lg);
 }
 
 .divider {
@@ -198,14 +214,14 @@ body {
 .nav-group {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: var(--space-sm);
 }
 
 .nav-title {
     font-size: 12px;
     font-weight: 500;
     color: var(--text-secondary);
-    padding: 0 16px;
+    padding: 0 var(--space-md);
     margin-bottom: 4px;
 }
 
@@ -213,7 +229,7 @@ body {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: var(--space-xs);
 }
 
 .nav-item {
@@ -227,11 +243,11 @@ body {
 .nav-link {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: var(--space-md);
     padding: 12px 16px;
     text-decoration: none;
     color: #eeeeee;
-    font-size: 14px;
+    font-size: var(--fs-label);
     font-weight: 500;
 }
 
@@ -250,7 +266,6 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
     background-color: #000000;
     overflow: hidden;
 }
@@ -286,19 +301,19 @@ body {
 
 .header-nav {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     position: relative;
     z-index: 1;
 }
 
 .tabs {
     display: flex;
-    gap: 24px;
+    gap: var(--space-lg);
 }
 
 .tab-item {
-    font-size: 16px;
+    font-size: var(--fs-body);
     font-weight: 600;
     color: var(--text-secondary);
     padding: 12px 0;
@@ -314,13 +329,12 @@ body {
     width: 250px;
     height: 55px;
     background-color: #171717;
-    /* neutral-900 approx */
     border: 1px solid #3a3b3b;
     border-radius: 10px;
     display: flex;
+    padding: 0 var(--space-md);
+    gap: var(--space-md);
     align-items: center;
-    padding: 0 16px;
-    gap: 16px;
 }
 
 .search-bar img {
@@ -332,7 +346,7 @@ body {
     background: transparent;
     border: none;
     color: white;
-    font-size: 16px;
+    font-size: var(--fs-body);
     font-weight: 500;
     outline: none;
     width: 100%;
@@ -340,8 +354,8 @@ body {
 
 .user-actions {
     display: flex;
+    gap: var(--space-lg);
     align-items: center;
-    gap: 20px;
 }
 
 .notification {
@@ -368,11 +382,11 @@ body {
     height: 50px;
     border-radius: 5px;
     display: flex;
-    align-items: center;
     padding: 0 10px;
     gap: 10px;
-    width: 180px;
+    max-width: 180px;
     cursor: pointer;
+    align-items: center;
 }
 
 .user-profile .avatar {
@@ -389,7 +403,7 @@ body {
 }
 
 .user-profile .username {
-    font-size: 16px;
+    font-size: var(--fs-body);
     font-weight: 600;
     color: white;
 }
@@ -399,20 +413,20 @@ body {
     z-index: 1;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: var(--space-md);
 }
 
 .banner-subtitle {
-    font-size: 16px;
+    font-size: var(--fs-body);
     font-weight: 700;
     color: white;
 }
 
 .banner-content {
-    padding: 24px;
+    padding: var(--space-lg);
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: var(--space-sm);
 }
 
 .banner-title {
@@ -424,26 +438,25 @@ body {
 
 .banner-info {
     display: flex;
-    align-items: center;
-    gap: 24px;
+    gap: var(--space-lg);
 }
 
 .banner-info .artist {
-    font-size: 24px;
+    font-size: var(--fs-h2);
     font-weight: 600;
     color: white;
 }
 
 .banner-info .views {
-    font-size: 20px;
+    font-size: var(--fs-h3);
     font-weight: 400;
     color: var(--text-secondary);
 }
 
 .banner-actions {
     display: flex;
-    gap: 24px;
-    padding: 0 20px;
+    gap: var(--space-lg);
+    padding: 0 var(--space-lg);
 }
 
 .btn-play {
@@ -452,7 +465,7 @@ body {
     border: none;
     border-radius: 50px;
     height: 50px;
-    font-size: 16px;
+    font-size: var(--fs-body);
     font-weight: 600;
     cursor: pointer;
     width: 120px;
@@ -475,7 +488,7 @@ body {
 .container {
     display: flex;
     gap: 20px;
-    padding: 0 24px;
+    padding: 0 var(--space-lg);
     height: 100vh;
     /* Remaining height */
     width: 100%;
@@ -494,26 +507,25 @@ body {
 .section-box {
     background-color: var(--card-bg);
     border-radius: 5px;
-    padding: 24px;
+    padding: var(--space-lg);
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: var(--space-lg);
 }
 
 .section-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
 }
 
 .section-header h2 {
-    font-size: 20px;
+    font-size: var(--fs-h3);
     font-weight: 700;
     color: white;
 }
 
 .section-header .view-all {
-    font-size: 16px;
+    font-size: var(--fs-body);
     font-weight: 500;
     color: var(--text-secondary);
     text-decoration: none;
@@ -521,16 +533,20 @@ body {
 
 /* Top Artists */
 .artist-list {
-    display: flex;
-    gap: 24px;
-    overflow-x: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+  /* Bù thêm 17px cho thanh cuộn dọc (scrollbar) */
+  width: calc(100% + 17px); 
+  /* Hoặc một giá trị cố định nếu bạn biết chắc chiều rộng container */
 }
+
+/* Xóa thuộc tính overflow-x: auto; nếu không cần cuộn ngang */
 
 .artist-card {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 16px;
+    gap: var(--space-md);
     min-width: 90px;
 }
 
@@ -542,20 +558,19 @@ body {
 }
 
 .artist-info {
-    text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: var(--space-xs);
 }
 
 .artist-info .name {
-    font-size: 16px;
+    font-size: var(--fs-body);
     font-weight: 600;
     color: white;
 }
 
 .artist-info .listeners {
-    font-size: 14px;
+    font-size: var(--fs-label);
     color: var(--text-secondary);
 }
 
@@ -563,19 +578,16 @@ body {
 .genre-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+    gap: var(--space-md);
 }
 
 .genre-item {
     height: 100px;
     border-radius: 10px;
     display: flex;
-    align-items: center;
-    justify-content: center;
     color: white;
-    font-size: 16px;
+    font-size: var(--fs-body);
     font-weight: 600;
-    text-align: center;
     padding: 10px;
 }
 
@@ -583,26 +595,23 @@ body {
 .chart-list {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: var(--space-lg);
 }
 
 .chart-item {
     display: flex;
     justify-content: space-between;
-    align-items: center;
 }
 
 .chart-left {
     display: flex;
-    align-items: center;
-    gap: 24px;
+    gap: var(--space-lg);
 }
 
 .chart-left .rank {
-    font-size: 16px;
+    font-size: var(--fs-body);
     color: white;
     width: 20px;
-    text-align: center;
 }
 
 .chart-left img {
@@ -615,30 +624,28 @@ body {
 .song-info {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 4px;
+    gap: var(--space-xs);
 }
 
 .song-info .song-title {
-    font-size: 16px;
+    font-size: var(--fs-body);
     font-weight: 600;
     color: white;
 }
 
 .song-info .song-artist {
-    font-size: 14px;
+    font-size: var(--fs-label);
     color: white;
     /* Figma says white for artist in chart list */
 }
 
 .chart-right {
     display: flex;
-    align-items: center;
-    gap: 24px;
+    gap: var(--space-lg);
 }
 
 .chart-right .duration {
-    font-size: 14px;
+    font-size: var(--fs-label);
     color: white;
 }
 
@@ -649,8 +656,6 @@ body {
     width: 32px;
     height: 32px;
     display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .btn-icon img {
@@ -671,18 +676,17 @@ body {
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: var(--space-lg);
 }
 
 .player-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     padding: var(--space-lg);
 }
 
 .player-header h2 {
-    font-size: 20px;
+    font-size: var(--fs-h3);
     font-weight: 700;
     color: white;
 }
@@ -690,9 +694,9 @@ body {
 .player-body {
     display: flex;
     flex-direction: column;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
     align-items: center;
-    gap: 24px;
-    padding: var(--space-lg)
 }
 
 .player-disc {
@@ -709,32 +713,31 @@ body {
 }
 
 .player-info {
-    text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: var(--space-md);
+    align-items: center;
 }
 
 .player-info h3 {
-    font-size: 24px;
+    font-size: var(--fs-h2);
     font-weight: 700;
     color: white;
 }
 
 .player-info p {
-    font-size: 16px;
+    font-size: var(--fs-body);
     color: white;
 }
 
 .player-progress {
     width: 100%;
     display: flex;
-    align-items: center;
-    gap: 16px;
+    gap: var(--space-md);
 }
 
 .player-progress .time {
-    font-size: 16px;
+    font-size: var(--fs-body);
     font-weight: 500;
     color: white;
 }
@@ -754,11 +757,10 @@ body {
     border-radius: 5px;
     padding: var(--space-lg);
     display: flex;
-    justify-content: center;
-    align-items: center;
     gap: var(--space-lg);
     margin-top: auto;
-    height: 180px;
+    height: 150px;
+    align-items: center;
 }
 
 .btn-control {
@@ -766,8 +768,6 @@ body {
     border: none;
     cursor: pointer;
     display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .btn-control img {
