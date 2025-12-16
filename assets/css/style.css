@@ -3,28 +3,23 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
+    color: #ffffff;
 }
 
 /* --- 1. BASE: MẶC ĐỊNH CHO DESKTOP (1920px / 1440px) --- */
 :root {
-    /* Đảm bảo trình duyệt gốc là 16px. 16px * 62.5% = 10px */
-    font-size: 62.5%; 
-
-    /* === SPACING (Hệ thống 8pt Grid đã chuyển sang REM) === */
-    --space-xs: 0.4rem;  /* 4px */
-    --space-sm: 0.8rem;  /* 8px */
-    --space-md: 1.6rem;  /* 16px */
-    --space-lg: 2.4rem;  /* 24px */
-    --space-xl: 3.2rem;  /* 32px */
-    --space-2xl: 4.8rem; /* 48px */
-
-    /* === TYPOGRAPHY (Cỡ chữ đã chuyển sang REM) === */
-    --fs-label: 1.4rem;  /* 14px */
-    --fs-body: 1.6rem;   /* 16px */
-    --fs-h3: 2.0rem;     /* 20px */
-    --fs-h2: 2.4rem;     /* 24px */
-    --fs-h1: 3.2rem;     /* 32px */
-
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-2xl: 48px;
+    /* === TYPOGRAPHY === */
+    --fs-label: 14px;
+    --fs-body: 16px;
+    --fs-h3: 20px;
+    --fs-h2: 24px;
+    --fs-h1: 32px;
     /* === LAYOUT === */
     --container-max-width: 1200px;
     /* Giới hạn chiều rộng nội dung */
@@ -46,17 +41,10 @@
 /* --- 2. TABLET (iPad, Laptop nhỏ) - Max-width: 1024px --- */
 @media (max-width: 1024px) {
     :root {
-        /* Spacing: Giữ nguyên các cái nhỏ, chỉ giảm các cái lớn */
         --space-lg: 20px;
-        /* 24px -> 20px cho gọn hơn chút */
         --space-xl: 24px;
-        /* 32px -> 24px */
         --space-2xl: 24px;
-        /* Lề màn hình thu hẹp lại để tiết kiệm đất */
-
-        /* Font: Vẫn giữ nguyên body 16px cho dễ đọc trên Tablet */
         --fs-h1: 28px;
-        /* Giảm tiêu đề to một chút */
     }
 
     .sidebar {
@@ -95,7 +83,6 @@
 /* --- 3. MOBILE (Điện thoại) - Max-width: 576px --- */
 @media (max-width: 576px) {
     :root {
-        /* Spacing: Chế độ Compact (Đậm đặc) */
         --space-md: 12px;
         /* 16px -> 12px (Padding nút/input nhỏ lại) */
         --space-lg: 16px;
@@ -155,6 +142,7 @@ body {
     color: var(--text-primary);
     height: 100vh;
     overflow: hidden;
+    max-width: 1440px;
 }
 
 .app {
@@ -247,7 +235,7 @@ body {
     padding: 12px 16px;
     text-decoration: none;
     color: #eeeeee;
-    font-size: var(--fs-label);
+    font-size: var(--fs-body);
     font-weight: 500;
 }
 
@@ -472,16 +460,15 @@ body {
 }
 
 .btn-fav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 50px;
     height: 50px;
     background: transparent;
-    border: none;
+    border: 2px solid var(--accent-color);
+    border-radius: 50% ;
     cursor: pointer;
-}
-
-.btn-fav img {
-    width: 100%;
-    height: 100%;
 }
 
 /* Content Container */
@@ -796,4 +783,218 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+
+/* Screen reader only class for accessibility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Focus styles for keyboard navigation */
+a:focus,
+button:focus,
+input:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Additional styles for new views */
+.album-grid,
+.artist-grid,
+.playlist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--space-lg);
+}
+
+.album-card,
+.artist-card-large,
+.playlist-card {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.album-card:hover,
+.artist-card-large:hover,
+.playlist-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.album-cover,
+.artist-avatar,
+.playlist-cover {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    position: relative;
+    margin-bottom: var(--space-md);
+}
+
+.album-cover img,
+.artist-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.playlist-cover {
+    background: linear-gradient(135deg, var(--accent-color), #764ba2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.playlist-cover .material-icons-round {
+    font-size: 64px;
+    color: white;
+}
+
+.album-play-btn,
+.artist-follow-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.album-card:hover .album-play-btn,
+.artist-card-large:hover .artist-follow-btn {
+    opacity: 1;
+}
+
+.genre-grid-large {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--space-lg);
+}
+
+.genre-card-large {
+    height: 150px;
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.genre-card-large:hover {
+    transform: scale(1.05);
+}
+
+.genre-card-large h3 {
+    font-size: var(--fs-h2);
+    font-weight: 700;
+}
+
+.genre-card-large .material-icons-round {
+    font-size: 48px;
+    align-self: flex-end;
+}
+
+.song-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.song-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.song-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.song-item img {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-md);
+    object-fit: cover;
+}
+
+.song-details {
+    flex: 1;
+}
+
+.song-details .song-title {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.song-details .song-artist {
+    font-size: var(--fs-label);
+    color: var(--text-secondary);
+}
+
+.genre-tabs {
+    display: flex;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+    flex-wrap: wrap;
+}
+
+.genre-tab {
+    padding: 8px 16px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--divider-color);
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.genre-tab:hover,
+.genre-tab.active {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.btn-create-playlist {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: 8px 16px;
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn-create-playlist:hover {
+    opacity: 0.9;
 }
