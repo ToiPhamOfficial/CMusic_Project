@@ -59,23 +59,7 @@
         display: none;
     }
 
-    .nav-item a span:last-child{
-        display: none;
-    }
-
-    .top-header .header-bg {
-        display: none;
-    }
-
-    .top-header .banner {
-        display: none;
-    }
-
-    .header-nav .tabs {
-        display: none;
-    }
-
-    .container .right-section {
+    .nav-item a span:last-child {
         display: none;
     }
 }
@@ -110,10 +94,6 @@
         display: none !important;
     }
 
-    .header-nav {
-        justify-content: flex-end !important;
-    }
-
     .user-profile {
         width: auto;
     }
@@ -137,12 +117,24 @@
     }
 }
 
+::-webkit-scrollbar {
+    width: 3px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 2px;
+}
+
 body {
     background-color: var(--bg-color);
     color: var(--text-primary);
     height: 100vh;
     overflow: hidden;
-    max-width: 1440px;
 }
 
 .app {
@@ -160,22 +152,20 @@ body {
     flex-direction: column;
     gap: var(--space-lg);
     flex-shrink: 0;
+    border-right: 1px solid var(--divider-color);
     overflow-y: auto;
 }
 
 .logo {
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: var(--space-sm);
 }
 
-.logo-icon {
+.logo img {
     width: 32px;
     height: 32px;
-}
-
-.logo-icon img {
-    width: 100%;
-    height: 100%;
 }
 
 .logo-text {
@@ -193,7 +183,7 @@ body {
 }
 
 .divider {
-    height: 2px;
+    height: 1px;
     background-color: var(--divider-color);
     border-radius: 2px;
     width: 100%;
@@ -206,7 +196,7 @@ body {
 }
 
 .nav-title {
-    font-size: 12px;
+    font-size: var(--fs-label);
     font-weight: 500;
     color: var(--text-secondary);
     padding: 0 var(--space-md);
@@ -251,48 +241,21 @@ body {
 
 /* Main Content */
 .main-content {
-    flex: 1;
     display: flex;
+    flex: 1;
     flex-direction: column;
+    align-items: center;
     background-color: #000000;
     overflow: hidden;
 }
 
 /* Header */
-.top-header {
-    /* height: 400px; */
-    width: 100%;
-    padding: var(--space-lg);
-    position: relative;
+.header {
     display: flex;
-    flex-direction: column;
-    gap: var(--space-2xl);
-    flex-shrink: 0;
-}
-
-.header-bg {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 50%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-}
-
-.header-bg img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.8;
-}
-
-.header-nav {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    position: relative;
-    z-index: 1;
+    padding: var(--space-lg);
+    gap: var(--space-2xl);
 }
 
 .tabs {
@@ -317,7 +280,7 @@ body {
     width: 250px;
     height: 55px;
     background-color: #171717;
-    border: 1px solid #3a3b3b;
+    border: 1px solid #3a3b3b;  
     border-radius: 10px;
     display: flex;
     padding: 0 var(--space-md);
@@ -342,7 +305,9 @@ body {
 
 .user-actions {
     display: flex;
+    flex: 1;
     gap: var(--space-lg);
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -358,6 +323,8 @@ body {
     right: 0;
     width: 10px;
     height: 10px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
 }
 
 .settings {
@@ -402,6 +369,10 @@ body {
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
+    background-image: linear-gradient(90deg, transparent 90%, #000000 100%), url('../img/hit-songs-bg/hit1.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right center;
 }
 
 .banner-subtitle {
@@ -467,23 +438,23 @@ body {
     height: 50px;
     background: transparent;
     border: 2px solid var(--accent-color);
-    border-radius: 50% ;
+    border-radius: 50%;
     cursor: pointer;
 }
 
 /* Content Container */
 .container {
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    gap: var(--space-lg);
     padding: 0 var(--space-lg);
     height: 100vh;
-    /* Remaining height */
     width: 100%;
     max-width: var(--container-max-width);
     overflow-y: auto;
 }
 
-.left-section {
+.content-section {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -518,14 +489,27 @@ body {
     text-decoration: none;
 }
 
+.tasgs-player {
+    display: flex;
+    gap: var(--space-lg);
+    width: 100%;
+}
+
+.tas-gs {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    flex: 1;
+}
+
 /* Top Artists */
 .artist-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-lg);
-  /* Bù thêm 17px cho thanh cuộn dọc (scrollbar) */
-  width: calc(100% + 17px); 
-  /* Hoặc một giá trị cố định nếu bạn biết chắc chiều rộng container */
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-lg);
+    /* Bù thêm 17px cho thanh cuộn dọc (scrollbar) */
+    width: calc(100% + 17px);
+    /* Hoặc một giá trị cố định nếu bạn biết chắc chiều rộng container */
 }
 
 /* Xóa thuộc tính overflow-x: auto; nếu không cần cuộn ngang */
@@ -658,18 +642,16 @@ body {
     flex-shrink: 0;
 }
 
-.player-container {
-    background-color: var(--card-bg);
-    border-radius: 5px;
+.home-player {
     display: flex;
     flex-direction: column;
-    gap: var(--space-lg);
+    padding: var(--space-lg);
 }
 
 .player-header {
     display: flex;
     justify-content: space-between;
-    padding: var(--space-lg);
+    align-items: center;
 }
 
 .player-header h2 {
@@ -765,24 +747,6 @@ body {
 .btn-control.play img {
     width: 48px;
     height: 48px;
-}
-
-/* Scrollbar styling */
-::-webkit-scrollbar {
-    width: 6px;
-}
-
-::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #333;
-    border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #555;
 }
 
 /* Screen reader only class for accessibility */

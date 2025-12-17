@@ -4,87 +4,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CMusic - Nền tảng nghe nhạc trực tuyến hàng đầu Việt Nam. Khám phá hàng triệu bài hát, album, nghệ sĩ và playlist.">
-    <meta name="keywords" content="nghe nhạc, nhạc trực tuyến, V-Pop, K-Pop, US-UK, EDM, playlist">
     <meta name="author" content="CMusic Team">
     <meta name="theme-color" content="#5674ff">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://cmusic.com/">
-    <meta property="og:title" content="CMusic - Khám phá âm nhạc không giới hạn">
-    <meta property="og:description" content="Nền tảng nghe nhạc trực tuyến hàng đầu Việt Nam. Khám phá hàng triệu bài hát, album, nghệ sĩ và playlist.">
-    <meta property="og:image" content="https://cmusic.com/assets/img/og-image.png">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://cmusic.com/">
-    <meta property="twitter:title" content="CMusic - Khám phá âm nhạc không giới hạn">
-    <meta property="twitter:description" content="Nền tảng nghe nhạc trực tuyến hàng đầu Việt Nam.">
-    <meta property="twitter:image" content="https://cmusic.com/assets/img/twitter-image.png">
-    
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+    <!---<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
-    <link rel="manifest" href="manifest.json">
-    
+    <link rel="manifest" href="manifest.json">-->
+
     <title>CMusic - Khám phá âm nhạc không giới hạn</title>
-    
+
     <!-- Preconnect to external resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://www.figma.com">
-    
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
-    
+
     <!-- Styles -->
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <div class="app">
-        <!-- Sidebar - Will be rendered by JavaScript -->
-        <aside class="sidebar" role="navigation" aria-label="Main navigation" id="sidebar-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" role="navigation" aria-label="Main navigation">
         </aside>
 
         <!-- Main Content -->
         <main class="main-content">
-            <!-- Header - Will be rendered by JavaScript -->
-            <header class="top-header" id="header-container">
+            <header class="header">
+                <!-- Header component  -->
             </header>
-
-            <!-- Content Container -->
             <div class="container">
-                <!-- Left section will be rendered by router -->
-                <div class="left-section">
-                </div>
-
-                <!-- Right Section (Player) - Will be rendered by JavaScript -->
-                <div class="right-section">
-                    <div class="player-container" role="region" aria-label="Trình phát nhạc" id="player-container">
-                    </div>
-                </div>
+                <!-- Nội dung do JS render -->
             </div>
         </main>
     </div>
     <script type="module" src="js/main.js"></script>
-    <script>
-        // Register Service Worker for PWA
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(registration => {
-                        console.log('ServiceWorker registered successfully:', registration.scope);
-                    })
-                    .catch(error => {
-                        console.log('ServiceWorker registration failed:', error);
-                    });
-            });
-        }
-    </script>
 </body>
 
 </html>

@@ -2,9 +2,7 @@ export default function Sidebar() {
     return `
         <!-- Logo -->
             <div class="logo">
-                <div class="logo-icon">
-                    <img src="https://www.figma.com/api/mcp/asset/8a2929ed-588a-46e2-8c06-e758c75eaf66" alt="Logo">
-                </div>
+                <img src="assets/img/logo-icon.png" alt="CMusic Logo">
                 <span class="logo-text">MUSIC</span>
             </div>
 
@@ -52,14 +50,15 @@ export default function Sidebar() {
 
                 <div class="divider"></div>
 
-                <!-- Library -->
+                <!-- Library -->    
                 <div class="nav-group">
                     <h3 class="nav-title">THƯ VIỆN</h3>
                     <ul class="nav-list">
                         <li class="nav-item">
                             <a href="/recent" class="nav-link">
-                                <img src="https://www.figma.com/api/mcp/asset/983486ec-9f4c-4bd5-b266-76f790ca9c1b"
-                                    alt="Gần đây">
+                                <span class="material-icons-round">
+                                    history
+                                </span>
                                 <span>Gần đây</span>
                             </a>
                         </li>
@@ -130,6 +129,5 @@ export default function Sidebar() {
                         </li>
                     </ul>
                 </div>
-            </div>
-    `;
+            </div>`;
 }

@@ -8,6 +8,7 @@ import Playlist from './views/Playlist.js';
 // Định nghĩa các route (sử dụng History API)
 const routes = {
     '/': Explore,
+    '/explore': Explore,
     '/album': Album,
     '/artist': Artist,
     '/genre': Genre,
@@ -22,12 +23,8 @@ export function renderRoute(path) {
     const currentPath = path || window.location.pathname;
     const route = routes[currentPath] || routes['/'];
     
-    // Lấy main content container
-    const mainContent = document.querySelector('.main-content .container .left-section');
-    
-    if (mainContent && route) {
-        mainContent.innerHTML = route();
-    }
+    // Lấy app container
+    $('.container').html(route());
     
     // Update active state trong sidebar
     updateActiveNavItem(currentPath);
@@ -36,36 +33,27 @@ export function renderRoute(path) {
 // Update active state trong navigation
 function updateActiveNavItem(path) {
     // Remove active class từ tất cả nav items
-    document.querySelectorAll('.nav-item').forEach(item => {
-        item.classList.remove('active');
-    });
+    $('.nav-item').removeClass('active');
     
     // Add active class cho nav item tương ứng
-    const activeLink = document.querySelector(`.nav-link[href="${path}"]`);
-    if (activeLink) {
-        activeLink.closest('.nav-item').classList.add('active');
-    }
+    $(`.nav-link[href="${path}"]`).closest('.nav-item').addClass('active');
 }
 
 // Khởi tạo router
 export function initRouter() {
     // Xử lý khi người dùng click vào nav-link
-    document.addEventListener('click', (e) => {
-        const link = e.target.closest('.nav-link');
+    $(document).on('click', '.nav-link', function(e) {
+        const href = $(this).attr('href');
         
-        if (link && link.hasAttribute('href')) {
-            const href = link.getAttribute('href');
-            
-            // Chỉ handle internal links (bắt đầu bằng /)
-            if (href.startsWith('/')) {
-                e.preventDefault();
-                navigateTo(href);
-            }
+        // Chỉ handle internal links (bắt đầu bằng /)
+        if (href && href.startsWith('/')) {
+            e.preventDefault();
+            navigateTo(href);
         }
     });
 
     // Xử lý khi người dùng dùng nút back/forward của trình duyệt
-    window.addEventListener('popstate', () => {
+    $(window).on('popstate', function() {
         renderRoute(window.location.pathname);
     });
 

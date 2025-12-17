@@ -10,7 +10,7 @@ let currentSong = null;
 let isPlaying = false;
 
 // Khởi tạo app
-document.addEventListener('DOMContentLoaded', () => {
+$(document).ready(function() {
     // Render các components tĩnh
     renderComponents();
     
@@ -24,64 +24,39 @@ document.addEventListener('DOMContentLoaded', () => {
 // Render các components tĩnh
 function renderComponents() {
     // Render Sidebar
-    const sidebarContainer = document.getElementById('sidebar-container');
-    if (sidebarContainer) {
-        sidebarContainer.innerHTML = Sidebar();
-    }
+    $('.sidebar').html(Sidebar());
     
     // Render Header
-    const headerContainer = document.getElementById('header-container');
-    if (headerContainer) {
-        headerContainer.innerHTML = Header();
-    }
+    $('.header').html(Header());
     
     // Render Player
-    const playerContainer = document.getElementById('player-container');
-    if (playerContainer) {
-        playerContainer.innerHTML = Player();
-    }
+    $('.player').html(Player());
 }
 
 // Khởi tạo các event listeners
 function initEventListeners() {
     // Search functionality
-    const searchInput = document.querySelector('.search-bar input');
-    if (searchInput) {
-        searchInput.addEventListener('input', handleSearch);
-    }
+    $('.search-bar input').on('input', handleSearch);
 
-    // Navigation items
-    document.addEventListener('click', (e) => {
-        // Handle navigation
-        if (e.target.closest('.nav-link')) {
-            handleNavigation(e);
-        }
-        
-        // Handle play button
-        if (e.target.closest('.btn-play-song')) {
-            const songId = parseInt(e.target.closest('.btn-play-song').dataset.songId);
-            playSong(songId);
-        }
-        
-        // Handle add to playlist
-        if (e.target.closest('.btn-add-song')) {
-            const songId = parseInt(e.target.closest('.btn-add-song').dataset.songId);
-            addToPlaylist(songId);
-        }
-        
-        // Handle player controls
-        if (e.target.closest('.btn-control.play')) {
-            togglePlay();
-        }
+    // Event delegation cho các actions
+    $(document).on('click', '.nav-link', handleNavigation);
+    
+    $(document).on('click', '.btn-play-song', function() {
+        const songId = parseInt($(this).data('song-id'));
+        playSong(songId);
     });
+    
+    $(document).on('click', '.btn-add-song', function() {
+        const songId = parseInt($(this).data('song-id'));
+        addToPlaylist(songId);
+    });
+    
+    $(document).on('click', '.btn-control.play', togglePlay);
 
     // Tab navigation
-    const tabs = document.querySelectorAll('.tab-item');
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            tabs.forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
-        });
+    $(document).on('click', '.tab-item', function() {
+        $('.tab-item').removeClass('active');
+        $(this).addClass('active');
     });
 }
 
@@ -109,15 +84,10 @@ function handleNavigation(e) {
     e.preventDefault();
     
     // Remove active class from all nav items
-    document.querySelectorAll('.nav-item').forEach(item => {
-        item.classList.remove('active');
-    });
+    $('.nav-item').removeClass('active');
     
     // Add active class to clicked nav item
-    const navItem = e.target.closest('.nav-item');
-    if (navItem) {
-        navItem.classList.add('active');
-    }
+    $(this).closest('.nav-item').addClass('active');
 }
 
 // Play song
@@ -136,28 +106,23 @@ function playSong(songId) {
 
 // Update player UI
 function updatePlayer(song) {
-    const playerInfo = document.querySelector('.player-info');
-    const playerDisc = document.querySelector('.player-disc img');
+    $('.player-info').html(`
+        <h3>${song.title}</h3>
+        <p>${song.artist}</p>
+    `);
     
-    if (playerInfo) {
-        playerInfo.innerHTML = `
-            <h3>${song.title}</h3>
-            <p>${song.artist}</p>
-        `;
-    }
-    
-    if (playerDisc) {
-        playerDisc.src = song.image;
-        playerDisc.alt = song.title;
-    }
+    $('.player-disc img').attr({
+        'src': song.image,
+        'alt': song.title
+    });
 }
 
 // Toggle play/pause
 function togglePlay() {
     isPlaying = !isPlaying;
     
-    const playBtn = document.querySelector('.btn-control.play img');
-    if (playBtn) {
+    const $playBtn = $('.btn-control.play img');
+    if ($playBtn.length) {
         if (isPlaying) {
             // Change to pause icon
             console.log('Playing');
