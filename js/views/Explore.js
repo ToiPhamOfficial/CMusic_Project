@@ -68,7 +68,7 @@ export default function Explore() {
                             </div>
                             <div class="player-body">
                                 <div class="player-disc">
-                                    <img src="https://www.figma.com/api/mcp/asset/d9fc626b-3041-4898-bc9f-bde47efaa68a"
+                                    <img src="/data/songs/thumb/Sea%20Of%20Feelings%20-%20Lowx.png"
                                         alt="Sea Of Feelings">
                                 </div>
                                 <div class="player-info">

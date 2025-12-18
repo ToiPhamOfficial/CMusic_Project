@@ -5,10 +5,11 @@ export const songs = [
         id: 1,
         title: "Kamin",
         artist: "Emin ft. JONY",
-        duration: "3:43",
-        image: "https://www.figma.com/api/mcp/asset/7cd60fd9-1ec8-4230-9406-db7c3ec7fd83",
+        duration: "3:05",
+        image: "/data/songs/thumb/Kamin%20-%20Emin%20ft.%20JONY.png",
         plays: "150M",
-        genre: "Pop"
+        genre: "Pop",
+        audioUrl: "/data/songs/mp3/Kamin%20-%20Emin%20ft.%20JONY.mp3"
     },
     {
         id: 2,
@@ -17,7 +18,8 @@ export const songs = [
         duration: "4:11",
         image: "https://www.figma.com/api/mcp/asset/68231e5b-1d9e-411f-8129-b89115c563cf",
         plays: "320M",
-        genre: "Pop"
+        genre: "Pop",
+        audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
     },
     {
         id: 3,
@@ -26,7 +28,8 @@ export const songs = [
         duration: "5:26",
         image: "https://www.figma.com/api/mcp/asset/01d5042a-0224-40a3-8b38-718f7e36bacf",
         plays: "134M",
-        genre: "V-Pop"
+        genre: "V-Pop",
+        audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
     },
     {
         id: 4,
@@ -35,7 +38,8 @@ export const songs = [
         duration: "3:33",
         image: "https://www.figma.com/api/mcp/asset/42f253ae-e89c-4b2b-9c13-9f6f9c0968da",
         plays: "970M",
-        genre: "EDM"
+        genre: "EDM",
+        audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"
     },
     {
         id: 5,
@@ -44,16 +48,18 @@ export const songs = [
         duration: "3:28",
         image: "https://www.figma.com/api/mcp/asset/c97a1d35-e6f0-4ac7-b955-ac2c7f949a54",
         plays: "89M",
-        genre: "V-Pop"
+        genre: "V-Pop",
+        audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3"
     },
     {
         id: 6,
         title: "Sea Of Feelings",
         artist: "Lowx",
         duration: "2:53",
-        image: "https://www.figma.com/api/mcp/asset/d9fc626b-3041-4898-bc9f-bde47efaa68a",
+        image: "/data/songs/thumb/Sea%20Of%20Feelings%20-%20Lowx.png",
         plays: "45M",
-        genre: "Lofi"
+        genre: "Lofi",
+        audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3"
     },
     {
         id: 7,
@@ -62,7 +68,8 @@ export const songs = [
         duration: "3:47",
         image: "assets/img/hit-songs-bg/hit1.png",
         plays: "63M",
-        genre: "Pop"
+        genre: "Pop",
+        audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3"
     }
 ];
 

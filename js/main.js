@@ -3,10 +3,7 @@ import Player from './components/Player.js';
 import Header from './components/Header.js';
 import { initRouter } from './router.js';
 import { songs, searchSongs } from './data.js';
-
-// State quản lý player
-let currentSong = null;
-let isPlaying = false;
+import audioManager from './utils/audioManager.js';
 
 // Khởi tạo app
 $(document).ready(function() {
@@ -18,6 +15,9 @@ $(document).ready(function() {
     
     // Thêm event listeners
     initEventListeners();
+    
+    // Set playlist mặc định cho audio manager
+    audioManager.setPlaylist(songs);
 });
 
 // Render các components tĩnh
@@ -28,8 +28,8 @@ function renderComponents() {
     // Render Header
     $('.header').html(Header());
     
-    // Render Player
-    $('.player').html(Player());
+    // Render Bottom Player
+    $('.bottom-player').html(Player());
 }
 
 // Khởi tạo các event listeners
@@ -49,13 +49,56 @@ function initEventListeners() {
         const songId = parseInt($(this).data('song-id'));
         addToPlaylist(songId);
     });
-    
-    $(document).on('click', '.btn-control.play', togglePlay);
 
     // Tab navigation
     $(document).on('click', '.tab-item', function() {
         $('.tab-item').removeClass('active');
         $(this).addClass('active');
+    });
+    
+    // Bottom Player Controls
+    initBottomPlayerControls();
+}
+
+// Khởi tạo bottom player controls
+function initBottomPlayerControls() {
+    // Play/Pause button
+    $(document).on('click', '.bottom-player-controls .btn-play', function() {
+        audioManager.togglePlay();
+    });
+    
+    // Previous button
+    $(document).on('click', '.bottom-player-controls .btn-control[title="Previous"]', function() {
+        audioManager.prev();
+    });
+    
+    // Next button
+    $(document).on('click', '.bottom-player-controls .btn-control[title="Next"]', function() {
+        audioManager.next();
+    });
+    
+    // Repeat button
+    $(document).on('click', '.bottom-player-controls .btn-control[title="Repeat"]', function() {
+        audioManager.toggleRepeat();
+    });
+    
+    // Shuffle button
+    $(document).on('click', '.bottom-player-controls .btn-control[title="Shuffle"]', function() {
+        audioManager.toggleShuffle();
+    });
+    
+    // Progress slider
+    $(document).on('input', '.progress-slider', function() {
+        const percentage = $(this).val();
+        audioManager.seek(percentage);
+    });
+    
+    // Favorite button
+    $(document).on('click', '.bottom-player-right .btn-control[title="Favorite"]', function() {
+        $(this).find('span').text(function(i, text) {
+            return text === 'favorite' ? 'favorite_border' : 'favorite';
+        });
+        $(this).toggleClass('favorited');
     });
 }
 
@@ -94,43 +137,12 @@ function playSong(songId) {
     const song = songs.find(s => s.id === songId);
     
     if (song) {
-        currentSong = song;
-        isPlaying = true;
-        updatePlayer(song);
+        audioManager.playSong(song, songs);
         console.log('Playing:', song.title);
-        
-        // TODO: Implement actual audio playback
     }
 }
 
-// Update player UI
-function updatePlayer(song) {
-    $('.player-info').html(`
-        <h3>${song.title}</h3>
-        <p>${song.artist}</p>
-    `);
-    
-    $('.player-disc img').attr({
-        'src': song.image,
-        'alt': song.title
-    });
-}
 
-// Toggle play/pause
-function togglePlay() {
-    isPlaying = !isPlaying;
-    
-    const $playBtn = $('.btn-control.play img');
-    if ($playBtn.length) {
-        if (isPlaying) {
-            // Change to pause icon
-            console.log('Playing');
-        } else {
-            // Change to play icon
-            console.log('Paused');
-        }
-    }
-}
 
 // Add to playlist
 function addToPlaylist(songId) {
@@ -154,4 +166,7 @@ function showNotification(message) {
 }
 
 // Export functions for use in other modules
-export { playSong, addToPlaylist, currentSong, isPlaying };
+export { playSong, addToPlaylist };
+
+// Make audioManager globally accessible for debugging
+window.audioManager = audioManager;
