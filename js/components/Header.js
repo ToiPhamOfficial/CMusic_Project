@@ -1,3 +1,5 @@
+import {users} from '../data.js';
+
 export default function Header() {
     return `
         <div class="tabs">
@@ -27,10 +29,10 @@ export default function Header() {
                     </button>
                     <div class="user-profile">
                         <div class="avatar">
-                            <img src="https://static-alter1.vidnoz.com/system/asset/202408/66beeabb5fa40.jpg"
-                                alt="Avatar">
+                            <img src="${users[0].avatar}"
+                                alt="User Avatar">
                         </div>
-                        <span class="username">Hoàng Quân</span>
+                        <span class="username">${users[0].username}</span>
                     </div>
                 </div>
     `;

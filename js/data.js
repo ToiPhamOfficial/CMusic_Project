@@ -1,5 +1,22 @@
 // Dữ liệu mẫu cho website CMusic
 
+export const users = [
+    {
+        id: 1,
+        username: "Hoàng Quân",
+        password: "hoangquan123@",
+        email: "hoang_quan@gmail.com",
+        avatar: "/data/users/avatar/hoang_quan_3343.png"
+    },
+    {
+        id: 2,
+        username: "Văn Khánh",
+        password: "vankhanh456@",
+        email: "van_khanh@gmail.com",
+        avatar: "/data/users/avatar/van_khanh.png"
+    }
+];
+
 export const songs = [
     {
         id: 1,
@@ -16,40 +33,40 @@ export const songs = [
         title: "Die With A Smile",
         artist: "Lady Gaga, Bruno Mars",
         duration: "4:11",
-        image: "https://www.figma.com/api/mcp/asset/68231e5b-1d9e-411f-8129-b89115c563cf",
+        image: "/data/songs/thumb/Die%20With%20A%20Smile%20-%20Lady%20Gaga,%20Bruno%20Mars.png",
         plays: "320M",
         genre: "Pop",
-        audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+        audioUrl: "/data/songs/mp3/Die%20With%20A%20Smile%20-%20Lady%20Gaga,%20Bruno%20Mars.mp3"
     },
     {
         id: 3,
         title: "Đừng Làm Trái Tim Anh Đau",
         artist: "Sơn Tùng MTP",
         duration: "5:26",
-        image: "https://www.figma.com/api/mcp/asset/01d5042a-0224-40a3-8b38-718f7e36bacf",
-        plays: "134M",
+        image: "/data/songs/thumb/Đừng%20Làm%20Trái%20Tim%20Anh%20Đau%20-%20Sơn%20Tùng%20MTP.png",
+        plays: "162M",
         genre: "V-Pop",
-        audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+        audioUrl: "/data/songs/mp3/Đừng%20Làm%20Trái%20Tim%20Anh%20Đau%20-%20Sơn%20Tùng%20MTP.mp3"
     },
     {
         id: 4,
         title: "Faded",
         artist: "Alan Walker",
         duration: "3:33",
-        image: "https://www.figma.com/api/mcp/asset/42f253ae-e89c-4b2b-9c13-9f6f9c0968da",
+        image: "/data/songs/thumb/Faded%20-%20Alan%20Walker.png",
         plays: "970M",
         genre: "EDM",
-        audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"
+        audioUrl: "/data/songs/mp3/Faded%20-%20Alan%20Walker.mp3"
     },
     {
         id: 5,
         title: "Mất Kết Nối",
         artist: "Dương Domic",
         duration: "3:28",
-        image: "https://www.figma.com/api/mcp/asset/c97a1d35-e6f0-4ac7-b955-ac2c7f949a54",
+        image: "/data/songs/thumb/Mất%20Kết%20Nối%20-%20Dương%20Domic.png",
         plays: "89M",
         genre: "V-Pop",
-        audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3"
+        audioUrl: "/data/songs/mp3/Mất%20Kết%20Nối%20-%20Dương%20Domic.mp3"
     },
     {
         id: 6,
@@ -59,7 +76,7 @@ export const songs = [
         image: "/data/songs/thumb/Sea%20Of%20Feelings%20-%20Lowx.png",
         plays: "45M",
         genre: "Lofi",
-        audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3"
+        audioUrl: "/data/songs/mp3/Sea%20Of%20Feelings%20-%20Lowx.mp3"
     },
     {
         id: 7,
@@ -69,7 +86,7 @@ export const songs = [
         image: "assets/img/hit-songs-bg/hit1.png",
         plays: "63M",
         genre: "Pop",
-        audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3"
+        audioUrl: "/data/songs/mp3/In%20My%20Feelings%20-%20Camila%20Cabello.mp3"
     }
 ];
 
