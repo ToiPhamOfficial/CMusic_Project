@@ -23,7 +23,7 @@
   --fs-h1: 1.75rem;      /* 28px (giảm từ 32px) */
 
   /* === LAYOUT === */
-  --container-max-width: 75rem; /* 1200px */
+  --container-max-width: 1200px; /* 1200px */
   --radius-md: 0.3125rem; /* 5px */
   --radius-lg: 0.75rem;   /* 12px */
 
@@ -128,6 +128,7 @@
 }
 
 ::-webkit-scrollbar {
+    height: 3px;
     width: 3px;
 }
 
@@ -138,6 +139,10 @@
 ::-webkit-scrollbar-thumb {
     background: var(--accent-color);
     border-radius: 2px;
+}
+
+span.material-icons-round {
+    font-size: 20px;
 }
 
 body {
@@ -153,20 +158,27 @@ body {
     height: 100vh;
 }
 
-button {
+.btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
     color: var(--text-primary);
 }
 
 /* Sidebar */
 .sidebar {
-    width: 250px;
+    width: 225px;
     background: linear-gradient(to bottom, var(--sidebar-bg-start) 20%, var(--sidebar-bg-end));
     padding: var(--space-lg);
     display: flex;
     flex-direction: column;
     gap: var(--space-lg);
     flex-shrink: 0;
-    border-right: 2px solid var(--divider-color);
+    border-right: 1px solid var(--divider-color);
     overflow-y: auto;
 }
 
@@ -197,7 +209,7 @@ button {
 }
 
 .divider {
-    height: 1px;
+    height: 2px;
     background-color: var(--divider-color);
     border-radius: 2px;
     width: 100%;
@@ -281,7 +293,6 @@ button {
     font-size: var(--fs-body);
     font-weight: 600;
     color: var(--text-secondary);
-    padding: 12px 0;
     cursor: pointer;
     letter-spacing: 1px;
 }
@@ -291,8 +302,8 @@ button {
 }
 
 .search-bar {
-    width: 250px;
-    height: 55px;
+    width: 225px;
+    height: 45px;
     background-color: #171717;
     border: 1px solid #3a3b3b;  
     border-radius: 10px;
@@ -310,7 +321,7 @@ button {
 .search-bar input {
     background: transparent;
     border: none;
-    color: white;
+    color: var(--text-primary);
     font-size: var(--fs-body);
     font-weight: 500;
     outline: none;
@@ -325,42 +336,42 @@ button {
     align-items: center;
 }
 
-.notification {
+.btn-notification {
     position: relative;
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
 }
 
-.notification .dot {
+.btn-notification .dot {
     position: absolute;
     top: 0;
     right: 0;
-    width: 10px;
-    height: 10px;
+    width: 7px;
+    height: 7px;
     background-color: var(--accent-color);
     border-radius: 50%;
 }
 
 .settings {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
 }
 
 .user-profile {
     background-color: #4a4a54;
-    height: 50px;
     border-radius: var(--radius-md);
     display: flex;
-    padding: 0 10px;
-    gap: 10px;
+    padding: var(--space-sm) var(--space-sm);
+    gap: var(--space-sm);
     max-width: 180px;
     cursor: pointer;
     align-items: center;
 }
 
 .user-profile .avatar {
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     border-radius: var(--radius-md);
     overflow: hidden;
 }
@@ -372,9 +383,8 @@ button {
 }
 
 .user-profile .username {
-    font-size: var(--fs-body);
+    font-size: var(--fs-label);
     font-weight: 600;
-    color: white;
 }
 
 .banner {
@@ -473,7 +483,6 @@ button {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding-bottom: 20px;
 }
 
 .section-box {
@@ -515,16 +524,37 @@ button {
     flex-direction: column;
     gap: var(--space-lg);
     flex: 1;
+    width: 100%;
 }
 
 /* Top Artists */
-.artist-list {
+
+.artist-slider-wrap {
+    position: relative;
+}
+
+.next-previous-controls {
+    /* display: flex; */
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.next-btn, .previous-btn {
+    height: 32px;
+    width: 32px;
+    border: 2px solid #4E4E4E;
+    border-radius: 50%;
+}
+
+.artist-slider {
     display: flex;
-    flex-wrap: wrap;
     gap: var(--space-lg);
-    /* Bù thêm 17px cho thanh cuộn dọc (scrollbar) */
-    width: calc(100% + 17px);
-    /* Hoặc một giá trị cố định nếu bạn biết chắc chiều rộng container */
+    overflow-x: auto;
+    scrollbar-width: none;
 }
 
 /* Xóa thuộc tính overflow-x: auto; nếu không cần cuộn ngang */
@@ -533,7 +563,8 @@ button {
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
-    min-width: 90px;
+    max-width: 90px;
+    cursor: pointer;
 }
 
 .artist-card img {
@@ -728,7 +759,7 @@ button {
     color: white;
 }
 
-.player-info p {
+.player-info span {
     font-size: var(--fs-body);
     color: white;
 }
@@ -1217,5 +1248,91 @@ button {
 
     .app {
         padding-bottom: 200px;
+    }
+}
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+.footer {
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.3));
+    padding: var(--space-lg) var(--space-lg);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: var(--space-lg);
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    align-items: start;
+}
+
+.footer-logo .logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.footer-logo img {
+    width: 2rem;
+    height: 2rem;
+}
+
+.footer-logo .logo-text {
+    font-size: var(--fs-h1);
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+.footer-info,
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.footer-section h4 {
+    font-size: var(--fs-body);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-sm);
+}
+
+.footer-section p {
+    font-size: var(--fs-label);
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 4px;
+}
+
+/* Footer responsive */
+@media (max-width: 1024px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+    
+    .footer-logo {
+        text-align: center;
+    }
+    
+    .footer-logo .logo {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer {
+        padding: var(--space-lg) var(--space-md);
+    }
+    
+    .footer-section h4 {
+        font-size: var(--fs-label);
+    }
+    
+    .footer-section p {
+        font-size: 11px;
     }
 }

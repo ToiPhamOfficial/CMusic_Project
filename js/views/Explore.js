@@ -12,8 +12,8 @@ export default function Explore() {
                         </div>
                     </div>
                     <div class="banner-actions">
-                        <button class="btn-play">Phát ngay</button>
-                        <button class="btn-fav">
+                        <button class="btn btn-play">Phát ngay</button>
+                        <button class="btn btn-fav">
                             <span class="material-icons-round">
                                 favorite
                             </span>
@@ -29,16 +29,30 @@ export default function Explore() {
                                     <h2>Top nghệ sĩ</h2>
                                     <a href="#artists" class="view-all">Tất cả</a>
                                 </div>
-                                <div class="artist-list">
-                                    ${artists.map(artist => `
-                                    <div class="artist-card" data-artist-id="${artist.id}">
-                                        <img src="${artist.image}" alt="${artist.name}">
-                                        <div class="artist-info">
-                                            <p class="name">${artist.name}</p>
-                                            <p class="listeners">${artist.listeners} lượt nghe</p>
-                                        </div>
+                                <div class="artist-slider-wrap">
+                                    <div class="next-previous-controls">
+                                        <button class="btn previous-btn">
+                                            <span class="material-icons-round">
+navigate_before
+</span>
+                                        </button>
+                                        <button class="btn next-btn">
+                                            <span class="material-icons-round">
+navigate_next
+</span>
+                                        </button>
                                     </div>
-                                    `).join('')}
+                                    <div class="artist-slider">
+                                        ${artists.map(artist => `
+                                        <div class="artist-card" data-artist-id="${artist.id}">
+                                            <img src="${artist.image}" alt="${artist.name}">
+                                            <div class="artist-info">
+                                                <p class="name">${artist.name}</p>
+                                                <p class="listeners">${artist.listeners} lượt nghe</p>
+                                            </div>
+                                        </div>
+                                        `).join('')}
+                                    </div>
                                 </div>
                             </section>
 
@@ -59,46 +73,46 @@ export default function Explore() {
                             </section>
                         </div>
                         <section class="home-player">
-                        <div class="player-content">
-                            <div class="player-header">
-                                <h2>Player</h2>
-                                <button class="btn-icon"><span class="material-icons-round" style="color: white;">
-                                        playlist_play
-                                    </span></button>
-                            </div>
-                            <div class="player-body">
-                                <div class="player-disc">
-                                    <img src="/data/songs/thumb/Sea%20Of%20Feelings%20-%20Lowx.png"
-                                        alt="Sea Of Feelings">
+                            <div class="player-content">
+                                <div class="player-header">
+                                    <h2>Player</h2>
+                                    <button class="btn btn-icon"><span class="material-icons-round">
+                                            queue_music
+                                        </span></button>
                                 </div>
-                                <div class="player-info">
-                                    <h3>Sea Of Feelings</h3>
-                                    <p>Lowx</p>
+                                <div class="player-body">
+                                    <div class="player-disc">
+                                        <img src="/data/songs/thumb/Sea%20Of%20Feelings%20-%20Lowx.png"
+                                            alt="Sea Of Feelings">
+                                    </div>
+                                    <div class="player-info">
+                                        <h3>Sea Of Feelings</h3>
+                                        <span>Lowx</span>
+                                    </div>
+                                    <div class="player-progress">
+                                        <span class="time">1:54</span>
+                                        <input type="range" min="0" max="100" value="40" class="progress-bar">
+                                        <span class="time">02:53</span>
+                                    </div>
                                 </div>
-                                <div class="player-progress">
-                                    <span class="time">1:54</span>
-                                    <input type="range" min="0" max="100" value="40" class="progress-bar">
-                                    <span class="time">02:53</span>
-                                </div>
-                            </div>
                             </div>
                             <div class="player-controls">
-                                <button class="btn-control">
-                                <span class="material-icons-round">
-                                repeat
-                                </span></button>
-                                <button class="btn-control"><span class="material-icons-round">
-skip_previous
-</span></button>
-                                <button class="btn-control play"><span class="material-icons-round">
-play_circle
-</span></button>
-                                <button class="btn-control"><span class="material-icons-round">
-skip_next
-</span></button>
-                                <button class="btn-control"><span class="material-icons-round">
-shuffle
-</span></button>
+                                <button class="btn btn btn-control">
+                                    <span class="material-icons-round">
+                                        repeat
+                                    </span></button>
+                                <button class="btn btn-control"><span class="material-icons-round">
+                                        skip_previous
+                                    </span></button>
+                                <button class="btn btn-control play"><span class="material-icons-round">
+                                        play_circle
+                                    </span></button>
+                                <button class="btn btn-control"><span class="material-icons-round">
+                                        skip_next
+                                    </span></button>
+                                <button class="btn btn-control"><span class="material-icons-round">
+                                        shuffle
+                                    </span></button>
                             </div>
                         </section>
                     </div>
@@ -127,7 +141,7 @@ shuffle
                                             play_arrow
                                         </span>
                                     </button>
-                                    <button class="btn-icon btn-add-song" data-song-id="${song.id}">
+                                    <button class="btn btn-icon btn-add-song" data-song-id="${song.id}">
                                         <span class="material-icons-round">
                                             add_circle
                                         </span>
@@ -138,18 +152,36 @@ shuffle
                         </div>
                     </section>
                 </section>
+                <div class="divider"></div>
                 <footer class="footer">
-            <div class="footer-content">
-                <div class="footer-left">
-                    <p>&copy; 2025 CMusic. All rights reserved.</p>
-                </div>
-                <div class="footer-links">
-                    <a href="#about">Về chúng tôi</a>
-                    <a href="#terms">Điều khoản</a>
-                    <a href="#privacy">Chính sách</a>
-                    <a href="#contact">Liên hệ</a>
-                </div>
-            </div>
-        </footer>
+                    <div class="footer-content">
+                        <div class="footer-logo">
+                            <div class="logo">
+                                <img src="assets/img/logo-icon.png" alt="CMusic Logo">
+                                <span class="logo-text">MUSIC</span>
+                            </div>
+                        </div>
+                        <div class="footer-info">
+                            <div class="footer-section">
+                                <h4>Doanh nghiệp quản lý</h4>
+                                <p>Công ty Cổ phần Tập đoán VNG. GCN ĐKDN: 0303490096 do sở KH & ĐT TPHCM cấp ngày
+                                    9/9/2004.</p>
+                                <p>Địa chỉ: Z06 Đường số 13, Phường Tân Thuận, TPHCM, Việt Nam.</p>
+                            </div>
+                            <div class="footer-section">
+                                <h4>Người chịu trách nhiệm nội dung</h4>
+                                <p>Ông Lê Hồng Minh</p>
+                            </div>
+                        </div>
+                        <div class="footer-contact">
+                            <div class="footer-section">
+                                <h4>Thông tin dịch vụ</h4>
+                                <p>GPMXH: 157/GP-BTTTT do Bộ Thông Tin và Truyền Thông cấp ngày 24/4/2019.</p>
+                                <p>CSKH/Liên hệ qua Zalo: 0934118443</p>
+                                <p>Email: zingmp3@vng.com.vn.</p>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
     `;
 }

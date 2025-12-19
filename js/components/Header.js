@@ -14,17 +14,17 @@ export default function Header() {
                 </div>
 
                 <div class="user-actions">
-                    <div class="notification">
+                    <button class="btn btn-notification">
                         <span class="material-icons-round">
                             notifications
                         </span>
                         <div class="dot"></div>
-                    </div>
-                    <div class="settings">
+                    </button>
+                    <button class="btn btn-settings">
                         <span class="material-icons-round">
                             settings
                         </span>
-                    </div>
+                    </button>
                     <div class="user-profile">
                         <div class="avatar">
                             <img src="https://static-alter1.vidnoz.com/system/asset/202408/66beeabb5fa40.jpg"

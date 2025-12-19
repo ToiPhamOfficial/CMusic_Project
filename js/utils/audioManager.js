@@ -178,11 +178,11 @@ class AudioManager {
         if (!this.currentSong) return;
 
         // Update song info
-        $('.bottom-player-info h3').text(this.currentSong.title);
-        $('.bottom-player-info p').text(this.currentSong.artist);
+        $('.bottom-player-info h3, .player-info h3').text(this.currentSong.title);
+        $('.bottom-player-info span, .player-info sapn').text(this.currentSong.artist);
 
         // Update album cover
-        $('.bottom-player-album img').attr({
+        $('.bottom-player-album img, .player-disc img').attr({
             'src': this.currentSong.image,
             'alt': this.currentSong.title
         });
@@ -190,7 +190,8 @@ class AudioManager {
 
     updatePlayButton() {
         const icon = this.isPlaying ? 'pause_circle' : 'play_circle';
-        $('.bottom-player-controls .btn-play span').text(icon);
+        $('.bottom-player-controls .btn-play span, .player-controls .play span').text(icon);
+    
     }
 
     updateProgress() {
@@ -201,17 +202,17 @@ class AudioManager {
         const percentage = (currentTime / duration) * 100;
 
         // Update progress bar
-        $('.progress-slider').val(percentage);
+        $('.progress-slider, .progress-bar').val(percentage);
 
         // Update time display
-        $('.bottom-player-progress .time:first').text(this.formatTime(currentTime));
-        $('.bottom-player-progress .time:last').text(this.formatTime(duration));
+        $('.bottom-player-progress .time:first, .player-progress .time:first').text(this.formatTime(currentTime));
+        $('.bottom-player-progress .time:last, .player-progress .time:last').text(this.formatTime(duration));
     }
 
     updateDuration() {
         if (this.audio.duration) {
-            $('.bottom-player-progress .time:last').text(this.formatTime(this.audio.duration));
-            $('.progress-slider').attr('max', 100);
+            $('.bottom-player-progress .time:last, .player-progress .time:last').text(this.formatTime(this.audio.duration));
+            $('.progress-slider, .progress-bar').attr('max', 100);
         }
     }
 

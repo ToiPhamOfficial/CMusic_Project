@@ -63,7 +63,7 @@ function initEventListeners() {
 // Khởi tạo bottom player controls
 function initBottomPlayerControls() {
     // Play/Pause button
-    $(document).on('click', '.bottom-player-controls .btn-play', function() {
+    $(document).on('click', '.bottom-player-controls .btn-play, .player-controls .play', function() {
         audioManager.togglePlay();
     });
     
