@@ -21,8 +21,8 @@ export default function Explore() {
                     </div>
                 </section>
                 <section class="content-section">
-                    <div class="tasgs-player">
-                        <div class="tas-gs">
+                    <div class="tags-player">
+                        <div class="tags">
                             <!-- Top Artists -->
                             <section class="section-box top-artists">
                                 <div class="section-header">
@@ -97,22 +97,21 @@ navigate_next
                                 </div>
                             </div>
                             <div class="player-controls">
-                                <button class="btn btn btn-control">
-                                    <span class="material-icons-round">
-                                        repeat
-                                    </span></button>
-                                <button class="btn btn-control"><span class="material-icons-round">
-                                        skip_previous
-                                    </span></button>
-                                <button class="btn btn-control play"><span class="material-icons-round">
-                                        play_circle
-                                    </span></button>
-                                <button class="btn btn-control"><span class="material-icons-round">
-                                        skip_next
-                                    </span></button>
-                                <button class="btn btn-control"><span class="material-icons-round">
-                                        shuffle
-                                    </span></button>
+                                <button class="btn btn-control">
+                                    <span class="material-icons-round">repeat</span>
+                                </button>
+                                <button class="btn btn-control">
+                                    <span class="material-icons-round">skip_previous</span>
+                                </button>
+                                <button class="btn btn-control play">
+                                    <span class="material-icons-round">play_circle</span>
+                                </button>
+                                <button class="btn btn-control">
+                                    <span class="material-icons-round">skip_next</span>
+                                </button>
+                                <button class="btn btn-control">
+                                    <span class="material-icons-round">shuffle</span>
+                                </button>
                             </div>
                         </section>
                     </div>

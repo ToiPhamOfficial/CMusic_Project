@@ -179,13 +179,16 @@ class AudioManager {
 
         // Update song info
         $('.bottom-player-info h3, .player-info h3').text(this.currentSong.title);
-        $('.bottom-player-info span, .player-info sapn').text(this.currentSong.artist);
+        $('.bottom-player-info span, .player-info span').text(this.currentSong.artist);
 
         // Update album cover
         $('.bottom-player-album img, .player-disc img').attr({
             'src': this.currentSong.image,
             'alt': this.currentSong.title
         });
+
+        $('.bottom-player').css('display', 'flex');
+        $('.app').css('padding-bottom', '90px');
     }
 
     updatePlayButton() {
