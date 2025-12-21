@@ -1,0 +1,218 @@
+/* ==========================================
+   HEADER COMPONENT
+   ========================================== */
+
+/* Header Container */
+.header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-lg);
+    gap: var(--space-2xl);
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    gap: var(--space-lg);
+}
+
+.tab-item {
+    font-size: var(--fs-body);
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: color var(--transition-fast);
+}
+
+.tab-item.active {
+    color: var(--accent-color);
+}
+
+.tab-item:hover {
+    color: var(--accent-color);
+}
+
+/* Search Bar */
+.search-bar-container {
+    position: relative;
+    flex: 1;
+    max-width: 25rem;
+}
+
+/* .search-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    max-width: 25rem;
+    height: 45px;
+    padding: 0 var(--space-md);
+    background-color: var(--bg-dark);
+    border: 1px solid var(--border-default);
+    border-radius: 999px;
+    transition: border-color var(--transition-fast);
+} */
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    max-width: 25rem;
+    height: 45px;
+    padding: 0 var(--space-md);
+    background-color: var(--bg-dark);
+    border: 1px solid var(--border-default);
+    border-bottom: none;
+    border-radius: 20px 20px 0 0;
+    transition: border-color var(--transition-fast);
+}
+
+.search-bar-suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-sm);
+    background-color: var(--bg-dark);
+    border: 1px solid var(--border-default);
+    border-top: none;
+    border-radius: 0 0 20px 20px;
+    z-index: var(--z-dropdown);
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.suggestion-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+}
+
+.suggestion-item:hover {
+    background-color: var(--hover-bg);
+}
+
+.suggestion-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: var(--radius-sm);
+    object-fit: cover;
+}
+
+.suggestion-item .suggestion-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.suggestion-item .suggestion-info .song-title {
+    font-size: var(--fs-body);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.suggestion-item .suggestion-info .song-artist {
+    font-size: var(--fs-label);
+    color: var(--text-secondary);
+}
+
+/* .search-bar:focus-within {
+    border-color: var(--accent-color);
+} */
+
+.search-bar img {
+    width: 16px;
+    height: 16px;
+}
+
+.search-bar input {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: var(--fs-body);
+    font-weight: 500;
+    outline: none;
+    width: 100%;
+}
+
+.search-bar input::placeholder {
+    color: var(--text-secondary);
+}
+
+/* User Actions */
+.user-actions {
+    display: flex;
+    gap: var(--space-lg);
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.btn-notification {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+}
+
+.btn-notification .dot {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 7px;
+    height: 7px;
+    background-color: var(--accent-color);
+    border-radius: var(--radius-round);
+}
+
+.btn-settings {
+    width: 20px;
+    height: 20px;
+}
+
+/* User Profile */
+.user-profile {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: center;
+    max-width: 180px;
+    padding: var(--space-sm);
+    cursor: pointer;
+    background-color: var(--btn-secondary-bg);
+    border-radius: 999px;
+    transition: background-color var(--transition-fast);
+}
+
+.user-profile:hover {
+    background-color: rgba(74, 74, 84, 0.8);
+}
+
+.user-profile .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-round);
+    overflow: hidden;
+}
+
+.user-profile .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-profile .username {
+    font-size: var(--fs-label);
+    font-weight: 600;
+    color: var(--text-primary);
+}

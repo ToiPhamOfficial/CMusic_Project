@@ -1,0 +1,158 @@
+/* ==========================================
+   RESPONSIVE DESIGN - Media Queries
+   ========================================== */
+
+/* === TABLET (iPad, Laptop nhỏ) - Max-width: 1024px === */
+@media (max-width: 1024px) {
+    /* Adjust spacing */
+    :root {
+        --space-lg: 1.25rem;  /* 20px */
+        --space-xl: 1.5rem;   /* 24px */
+        --space-2xl: 1.5rem;  /* 24px */
+        --fs-h1: 1.75rem;     /* 28px */
+    }
+
+    /* Sidebar adjustments */
+    .sidebar {
+        width: auto !important;
+    }
+
+    .sidebar .logo {
+        display: none;
+    }
+
+    .nav-title {
+        display: none;
+    }
+
+    .nav-item a span:last-child {
+        display: none;
+    }
+
+    /* Hide banner and home player on tablet */
+    .banner {
+        display: none !important;
+    }
+
+    .home-player {
+        display: none !important;
+    }
+
+    /* Bottom player adjustments */
+    .bottom-player-left,
+    .bottom-player-right {
+        flex: 0 0 200px;
+    }
+}
+
+/* === MOBILE (Điện thoại) - Max-width: 576px === */
+@media (max-width: 576px) {
+    /* Adjust spacing for mobile */
+    :root {
+        /* Spacing */
+        --space-md: 0.75rem;   /* 12px */
+        --space-lg: 1rem;      /* 16px */
+        --space-2xl: 1rem;     /* 16px */
+
+        /* Typography */
+        --fs-label: 0.75rem;   /* 12px */
+        --fs-body: 0.875rem;   /* 14px */
+        --fs-h3: 1rem;         /* 16px */
+        --fs-h2: 1.25rem;      /* 20px */
+        --fs-h1: 1.5rem;       /* 24px */
+
+        /* Radius */
+        --radius-lg: 0.375rem; /* 6px */
+    }
+
+    /* Hide sidebar completely on mobile */
+    .sidebar {
+        display: none !important;
+    }
+
+    /* Header adjustments */
+    .user-profile {
+        width: auto;
+    }
+
+    .user-profile .username {
+        display: none;
+    }
+
+    .search-bar {
+        width: auto !important;
+        background-color: transparent !important;
+        border: none !important;
+    }
+
+    .search-bar input {
+        display: none;
+    }
+
+    /* Hide elements on mobile */
+    .chart-right {
+        display: none !important;
+    }
+
+    .banner {
+        display: none !important;
+    }
+
+    .home-player {
+        display: none !important;
+    }
+
+    /* Bottom player mobile layout */
+    .bottom-player {
+        height: auto;
+        padding: var(--space-md);
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+
+    .bottom-player-left {
+        width: 100%;
+        flex: none;
+    }
+
+    .bottom-player-center {
+        width: 100%;
+    }
+
+    .bottom-player-right {
+        flex: none;
+        justify-content: center;
+    }
+
+    .app {
+        padding-bottom: 200px;
+    }
+
+    /* Content adjustments */
+    .genre-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .album-grid,
+    .artist-grid,
+    .playlist-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .container {
+        padding: 0 var(--space-md);
+    }
+}
+
+/* === LARGE SCREENS (Desktop) - Min-width: 1440px === */
+@media (min-width: 1440px) {
+    .container {
+        max-width: 1400px;
+    }
+
+    .album-grid,
+    .artist-grid,
+    .playlist-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}

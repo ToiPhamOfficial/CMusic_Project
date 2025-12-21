@@ -395,7 +395,10 @@ body {
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
-    background-image: linear-gradient(90deg, transparent 90%, #000000 100%), url('../img/hit-songs-bg/hit1.png');
+    width: 100%;
+    padding: var(--space-lg);
+    border-radius: var(--radius-md);
+    background-image: url("../img/hit-songs-bg/hit1.png"), linear-gradient( 90deg, #1a1a21 0%, #000000 100%);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right center;
@@ -515,13 +518,13 @@ body {
     text-decoration: none;
 }
 
-.tasgs-player {
+.tags-player {
     display: flex;
     gap: var(--space-lg);
     width: 100%;
 }
 
-.tas-gs {
+.tags {
     display: flex;
     flex-direction: column;
     gap: var(--space-lg);
@@ -775,9 +778,9 @@ body {
 }
 
 .player-progress .time {
+    min-width: 35px;
     font-size: var(--fs-body);
-    font-weight: 500;
-    color: white;
+    font-weight: 400;
 }
 
 .progress-bar {

@@ -1,0 +1,75 @@
+/* ==========================================
+   CSS VARIABLES - Design Tokens
+   ========================================== */
+
+:root {
+  /* === SPACING SYSTEM === */
+  --space-xs: 0.25rem;   /* 4px */
+  --space-sm: 0.5rem;    /* 8px */
+  --space-md: 0.875rem;  /* 14px */
+  --space-lg: 1.25rem;   /* 20px */
+  --space-xl: 1.75rem;   /* 28px */
+  --space-2xl: 2.5rem;   /* 40px */
+
+  /* === TYPOGRAPHY === */
+  --fs-label: 0.75rem;   /* 12px */
+  --fs-body: 0.875rem;   /* 14px */
+  --fs-h3: 1.125rem;     /* 18px */
+  --fs-h2: 1.375rem;     /* 22px */
+  --fs-h1: 1.75rem;      /* 28px */
+
+  /* === BORDER RADIUS === */
+  --radius-sm: 0.3125rem; /* 5px */
+  --radius-md: 0.625rem;  /* 10px */
+  --radius-lg: 0.75rem;   /* 12px */
+  --radius-round: 50%;
+
+  /* === LAYOUT DIMENSIONS === */
+  --container-max-width: 1200px;
+  --sidebar-width: 225px;
+  --player-height: 90px;
+
+  /* === COLOR PALETTE === */
+  /* Background Colors */
+  --bg-primary: #17161b;
+  --bg-secondary: #1a1a21;
+  --bg-dark: #171717;
+  --bg-black: #000000;
+  --sidebar-bg-start: #1a1a21;
+  --sidebar-bg-end: #000000;
+  --hover-bg: rgba(255, 255, 255, 0.05);
+  
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #75737c;
+  
+  /* Accent & Interactive */
+  --accent-color: #5674ff;
+  --accent-hover: #4562e6;
+  
+  /* UI Elements */
+  --card-bg: #1a1a21;
+  --divider-color: #2d2f39;
+  --border-default: #3a3b3b;
+  --border-gray: #4e4e4e;
+  
+  /* Button Background */
+  --btn-secondary-bg: #4a4a54;
+  --btn-play-bg: rgba(137, 137, 137, 0.15);
+  
+  /* === Z-INDEX SCALE === */
+  --z-base: 1;
+  --z-dropdown: 10;
+  --z-sticky: 100;
+  --z-modal: 500;
+  --z-player: 1000;
+  
+  /* === TRANSITIONS === */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  
+  /* === SHADOWS === */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.3);
+}

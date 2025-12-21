@@ -1,0 +1,25 @@
+/* ==========================================
+   CMUSIC - MAIN STYLESHEET
+   Import all CSS modules in correct order
+   ========================================== */
+
+/* === 1. BASE LAYER === */
+/* Variables must come first */
+@import url('base/variables.css');
+
+/* Reset and base styles */
+@import url('base/reset.css');
+
+/* === 2. UTILITIES === */
+@import url('utils/utilities.css');
+
+/* === 3. COMPONENTS === */
+@import url('components/sidebar.css');
+@import url('components/header.css');
+@import url('components/content.css');
+@import url('components/player.css');
+@import url('components/bottom-player.css');
+
+/* === 4. RESPONSIVE === */
+/* Media queries must come last */
+@import url('responsive.css');
