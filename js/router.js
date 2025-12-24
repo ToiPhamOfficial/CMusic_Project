@@ -4,7 +4,7 @@ import Album from './views/Album.js';
 import Artist from './views/Artist.js';
 import Genre from './views/Genre.js';
 import Playlist from './views/Playlist.js';
-
+import Favorite from './views/Favorite.js'
 // Định nghĩa các route (sử dụng History API)
 const routes = {
     '/': Explore,
@@ -14,7 +14,7 @@ const routes = {
     '/genre': Genre,
     '/playlist': Playlist,
     '/recent': Explore,
-    '/favorites': Explore,
+    '/favorites': Favorite,
     '/archive': Explore,
 };
 

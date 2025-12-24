@@ -342,6 +342,48 @@
     color: var(--text-primary);
 }
 
+/* Songs list*/
+.song-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.song-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.song-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.song-item img {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-md);
+    object-fit: cover;
+}
+
+.song-details {
+    flex: 1;
+}
+
+.song-details .song-title {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.song-details .song-artist {
+    font-size: var(--fs-label);
+    color: var(--text-secondary);
+}
+
 /* Album, Artist, Playlist Grids */
 .album-grid,
 .artist-grid,

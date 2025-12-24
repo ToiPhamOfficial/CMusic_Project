@@ -25,6 +25,10 @@
 @import url('responsive.css');
 
 
+/* ==========================================
+   Artist
+   ========================================== */
+
 /* --- Hero Section (Phần ảnh bìa to) --- */
 .section-hero {
     flex-shrink: 0;
@@ -273,4 +277,249 @@
         display: none;
         /* Ẩn bớt thông tin */
     }
+}
+
+
+/* ==========================================
+   
+   ========================================== */
+
+/* --- Playlist Hero Section --- */
+.playlist-hero {
+    position: relative;
+    display: flex;
+    align-items: flex-end; /* Căn nội dung xuống đáy */
+    padding: 40px 30px;
+    height: 350px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+/* Hiệu ứng nền xanh/tím tỏa sáng phía trên */
+.hero-bg-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #2b4cde 0%, rgba(0,0,0,0) 100%);
+    opacity: 0.6;
+    z-index: 1;
+}
+
+/* Ảnh bìa playlist (Gradient + Heart Icon) */
+.playlist-cover {
+    position: relative;
+    z-index: 2;
+    width: 220px;
+    height: 220px;
+    background: linear-gradient(135deg, #00c6ff, #0072ff, #a18cd1, #fbc2eb); /* Gradient giả lập màu */
+    background: linear-gradient(135deg, #38ef7d, #11998e); /* Nếu muốn màu xanh lá thì đổi đây, dưới đây là màu tím xanh như ảnh */
+    background: linear-gradient(135deg, #4facfe 0%, #a6c1ee 100%);
+    background: linear-gradient(to bottom right, #24C6DC, #514A9D); /* Màu sát với ảnh nhất */
+    
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 25px;
+    margin-bottom: 0px;
+    flex-shrink: 0;
+}
+
+.playlist-cover .fa-heart {
+    font-size: 80px;
+    color: #fff;
+}
+
+.playlist-info {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 220px;
+}
+
+.playlist-subtitle {
+    font-size: 0.9rem;
+    color: #aaa; /* Màu chữ xám nhạt */
+    margin-bottom: 8px;
+}
+
+.playlist-title {
+    font-size: 3rem; /* Chữ to đậm */
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+/* Nút "Phát tất cả" */
+.btn-play-all {
+    background: linear-gradient(90deg, #4e54c8, #8f94fb);
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    transition: transform 0.2s;
+}
+
+.btn-play-all:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+/* --- Track List --- */
+.track-list-container {
+    padding: 0 30px;
+}
+
+/* Grid Layout: Định nghĩa độ rộng các cột */
+/* Cấu trúc: [Index] [Title] [Artist] [Album] [Time] */
+.track-header, .track-item {
+    display: grid;
+    grid-template-columns: 50px 2fr 1.5fr 1.5fr 80px;
+    align-items: center;
+    padding: 10px 10px;
+}
+
+.track-header {
+    text-transform: uppercase;
+    color: #b3b3b3;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-bottom: 1px solid #333;
+    margin-bottom: 10px;
+}
+
+.track-header .col-time {
+    text-align: right;
+    padding-right: 15px;
+}
+
+/* Track Item Style */
+.track-item {
+    border-radius: 4px;
+    color: #fff;
+    transition: background-color 0.2s;
+}
+
+.track-item:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+/* Active Row Style (Bài đang hát) */
+.track-item.active {
+    background-color: #1c1c1c; /* Nền xám đậm */
+}
+
+/* Đổi màu chữ xanh cho hàng Active */
+.track-item.active .col-title .song-name,
+.track-item.active .col-artist,
+.track-item.active .col-album {
+    color: #5189ff; /* Màu xanh dương nhạt giống ảnh */
+}
+
+.col-index {
+    color: #b3b3b3;
+    font-size: 1rem;
+}
+
+.track-item.active .col-index {
+    color: #fff; /* Icon play màu trắng */
+}
+
+/* Cột Tiêu đề (Hình + Tên) */
+.col-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.track-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.song-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* Các cột còn lại */
+.col-artist, .col-album {
+    font-size: 0.9rem;
+    color: #b3b3b3;
+}
+
+/* Nếu hàng thường (không active) thì chữ trắng hơn chút */
+.track-item:not(.active) .col-artist,
+.track-item:not(.active) .col-album {
+    color: #b3b3b3; 
+}
+.track-item:not(.active) .song-name {
+    color: #fff;
+}
+
+.col-time {
+    text-align: right;
+    color: #b3b3b3;
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon-more {
+    display: none; /* Ẩn dấu 3 chấm mặc định */
+    cursor: pointer;
+}
+
+.track-item:hover .icon-more {
+    display: block; /* Hiện khi hover */
+}
+
+/* --- Xem thêm --- */
+.see-more {
+    margin-top: 15px;
+    padding-left: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.see-more:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Mobile */
+@media (max-width: 768px) {
+    .playlist-hero {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        height: auto;
+    }
+    .playlist-cover { margin-right: 0; margin-bottom: 20px; }
+    .playlist-info { height: auto; align-items: center; }
+    
+    .track-header, .track-item {
+        grid-template-columns: 40px 1fr 60px; /* Ẩn cột Artist/Album */
+    }
+    .col-artist, .col-album { display: none; }
 }
