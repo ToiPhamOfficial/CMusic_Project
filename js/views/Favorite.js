@@ -19,7 +19,7 @@ export default function Favorite() {
                 </div>
             </div>
 
-            <div class="track-list-container">
+            <section class="track-list-container">
                 
                 <div class="track-header">
                     <div class="col-index">#</div>
@@ -71,7 +71,7 @@ export default function Favorite() {
                     Xem thêm <span class="material-icons-round">arrow_drop_down</span>
                 </div>
 
-            </div>
+            </section>
         </div>
     `;
 }

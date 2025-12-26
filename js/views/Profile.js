@@ -34,7 +34,7 @@ export default function Profile() {
                         <div class="profile-stats">Đang theo dõi <strong>${userData.following}</strong></div>
                         
                         <button class="btn-play-profile">
-                            <i class="fa-solid fa-play"></i> Phát tất cả
+                            <span class="material-icons-round">play_arrow</span> Phát tất cả
                         </button>
                     </div>
                 </div>

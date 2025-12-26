@@ -6,6 +6,11 @@ import Genre from './views/Genre.js';
 import Playlist from './views/Playlist.js';
 import Favorite from './views/Favorite.js'
 import Profile from './views/Profile.js';
+import RecentlyPlayed_Songs from './views/RecentlyPlayed-Songs.js';
+import RecentlyPlayed_Playlist from './views/RecentlyPlayed-Playlist.js';
+import RecentlyPlayed_Album from './views/RecentlyPlayed-Album.js';
+import RecentlyPlayed_Artist from './views/RecentlyPlayed_Artist.js';
+
 // Định nghĩa các route (sử dụng History API)
 const routes = {
     '/': Explore,
@@ -14,7 +19,10 @@ const routes = {
     '/artist': Artist,
     '/genre': Genre,
     '/playlist': Playlist,
-    '/recent': Explore,
+    '/recent': RecentlyPlayed_Songs,
+    '/recent/playlist': RecentlyPlayed_Playlist,
+    '/recent/album': RecentlyPlayed_Album,
+    '/recent/artist': RecentlyPlayed_Artist,
     '/favorites': Favorite,
     '/archive': Explore,
     '/profile': Profile
