@@ -19,7 +19,7 @@ export default function Sidebar() {
                     <h3 class="nav-title">MENU</h3>
                     <ul class="nav-list">
                         <li class="nav-item active">
-                            <a href="/explore" class="nav-link">
+                            <a href="/" class="nav-link">
                                 <span class="material-icons-round">
                                     explore
                                 </span>

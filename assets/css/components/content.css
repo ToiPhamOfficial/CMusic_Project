@@ -526,3 +526,90 @@
 .btn-create-playlist:hover {
     opacity: 0.9;
 }
+
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+.footer {
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.3));
+    padding: var(--space-lg) var(--space-lg);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: var(--space-lg);
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    align-items: start;
+}
+
+.footer-logo .logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.footer-logo img {
+    width: 2rem;
+    height: 2rem;
+}
+
+.footer-logo .logo-text {
+    font-size: var(--fs-h1);
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+.footer-info,
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.footer-section h4 {
+    font-size: var(--fs-body);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-sm);
+}
+
+.footer-section p {
+    font-size: var(--fs-label);
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 4px;
+}
+
+/* Footer responsive */
+@media (max-width: 1024px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+    
+    .footer-logo {
+        text-align: center;
+    }
+    
+    .footer-logo .logo {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer {
+        padding: var(--space-lg) var(--space-md);
+    }
+    
+    .footer-section h4 {
+        font-size: var(--fs-label);
+    }
+    
+    .footer-section p {
+        font-size: 11px;
+    }
+}

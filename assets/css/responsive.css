@@ -16,12 +16,6 @@
     .banner {
         display: none;
     }
-
-    /* Bottom player adjustments */
-    .bottom-player-left,
-    .bottom-player-right {
-        flex: 0 0 200px;
-    }
 }
 
 /* === MOBILE (Điện thoại) - Max-width: 576px === */
@@ -51,28 +45,6 @@
 
     .banner {
         display: none !important;
-    }
-
-    /* Bottom player mobile layout */
-    .bottom-player {
-        height: auto;
-        padding: var(--space-md);
-        flex-direction: column;
-        gap: var(--space-md);
-    }
-
-    .bottom-player-left {
-        width: 100%;
-        flex: none;
-    }
-
-    .bottom-player-center {
-        width: 100%;
-    }
-
-    .bottom-player-right {
-        flex: none;
-        justify-content: center;
     }
 
     /* Content adjustments */

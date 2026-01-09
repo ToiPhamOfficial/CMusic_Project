@@ -10,9 +10,6 @@ import { initRouter } from './router.js';
 import { navigateTo } from './router.js';
 import { songs, searchSongs } from './data.js';
 
-/* Import state */
-import { artistState } from './state/stateArtist.js';
-
 /* Import services */
 import auth from './services/auth.js';
 import audioManager from './services/audioManager.js';
@@ -47,15 +44,15 @@ function renderComponents() {
     $('.header').html(Header());
 
     // Render Bottom Player
-    $('.bottom-player').html(Player());
+    $('.player').html(Player());
 
     $('#modal-root').html(LoginSignup());
 }
 
 // Khởi tạo các event listeners
 function initEventListeners() {
-    // Search functionality
-    $('.search-bar input').on('input', handleSearch);
+    // Search functionality - Sử dụng event delegation
+    $(document).on('input', '.search-bar input', handleSearch);
 
     // Listeners for other element :))
     $(document).on('click', '[data-route]', function () {
@@ -63,6 +60,8 @@ function initEventListeners() {
         navigateTo(path);
     });
 
+    // Notifications & Settings
+    initNotificationsAndSettings();
 
     // Event delegation cho các actions
     $(document).on('click', '.nav-link', handleNavigation);
@@ -84,7 +83,7 @@ function initEventListeners() {
     });
 
     // Bottom Player Controls
-    initBottomPlayerControls();
+    initPlayerControls();
 
     // Search Bar interactions
     initSearchBar();
@@ -123,13 +122,14 @@ function initEventListeners() {
 }
 
 function initSidebarToggle() {
-    $('.btn-menu, #btn-close-sidebar').on('click', function () {
+    // Sử dụng event delegation để tránh mất event khi re-render header
+    $(document).on('click', '.btn-menu, #btn-close-sidebar', function () {
         $('.sidebar').toggleClass('is-active');
         $('.overlay').toggleClass('is-open');
     });
 
     // Đóng sidebar khi bấm vào overlay
-    $('.overlay').on('click', function () {
+    $(document).on('click', '.overlay', function () {
         $('.sidebar').removeClass('is-active');
         $(this).removeClass('is-open');
     });
@@ -146,15 +146,15 @@ function initLoginSignupModal() {
         $(`${viewId}`).addClass('active');
     }
 
-    // 1. Mở modal (mặc định luôn hiện login)
-    $('.mini-user-profile.is-guest').on('click', function () {
+    // 1. Mở modal (mặc định luôn hiện login) - Sử dụng event delegation
+    $(document).on('click', '.mini-user-profile.is-guest', function () {
         $modal.addClass('is-shown');
         switchAuthView('#login-view');
     });
 
     // 2. Chuyển đổi qua lại giữa Đăng nhập/Đăng ký (Sử dụng ID từ href)
     // Giả sử HTML: <a href="#signup-view" class="modal__link">Đăng ký ngay!</a>
-    $('.modal__link').on('click', function (e) {
+    $(document).on('click', '.modal__link', function (e) {
         e.preventDefault();
         const targetView = $(this).attr('data-target');
         console.log('Switching to view:', targetView);
@@ -173,15 +173,15 @@ function initLoginSignupModal() {
         }
     });
 
-    // Toggle password visibility
-    $('.auth-form__toggle-password').on('click', function () {
+    // Toggle password visibility - Sử dụng event delegation
+    $(document).on('click', '.auth-form__toggle-password', function () {
         const $passwordInput = $(this).siblings('input[type="password"], input[type="text"]');
         const type = $passwordInput.attr('type') === 'password' ? 'text' : 'password';
         $passwordInput.attr('type', type);
         $(this).find('span').text(type === 'password' ? 'visibility' : 'visibility_off');
     });
 
-    $('.auth-form').on('submit', function (e) {
+    $(document).on('submit', '.auth-form', function (e) {
         e.preventDefault();
         // if(!$(this).valid) {
         //     console.log('Form is valid, proceeding...');
@@ -226,30 +226,29 @@ function initLoginSignupModal() {
 }
 
 // Khởi tạo bottom player controls
-function initBottomPlayerControls() {
+function initPlayerControls() {
     // Play/Pause button
-    $(document).on('click', '.bottom-player-controls .btn-play, .player-controls .play, .suggestion-item div button', function () {
-        Toast.error('Đang phát nhạc mà chưa được cấp phép âm thanh do trình duyệt chặn tự động phát!');
+    $(document).on('click', '.player-controls .btn-play, .player-controls .play, .suggestion-item div button', function () {
         audioManager.togglePlay();
     });
 
     // Previous button
-    $(document).on('click', '.bottom-player-controls .btn-control[title="Previous"]', function () {
+    $(document).on('click', '.player-controls .btn-control[title="Previous"]', function () {
         audioManager.prev();
     });
 
     // Next button
-    $(document).on('click', '.bottom-player-controls .btn-control[title="Next"]', function () {
+    $(document).on('click', '.player-controls .btn-control[title="Next"]', function () {
         audioManager.next();
     });
 
     // Repeat button
-    $(document).on('click', '.bottom-player-controls .btn-control[title="Repeat"]', function () {
+    $(document).on('click', '.player-controls .btn-control[title="Repeat"]', function () {
         audioManager.toggleRepeat();
     });
 
     // Shuffle button
-    $(document).on('click', '.bottom-player-controls .btn-control[title="Shuffle"]', function () {
+    $(document).on('click', '.player-controls .btn-control[title="Shuffle"]', function () {
         audioManager.toggleShuffle();
     });
 
@@ -260,21 +259,111 @@ function initBottomPlayerControls() {
     });
 
     // Favorite button
-    $(document).on('click', '.bottom-player-right .btn-control[title="Favorite"]', function () {
+    $(document).on('click', '.player-right .btn-control[title="Favorite"]', function () {
         $(this).find('span').text(function (i, text) {
             return text === 'favorite' ? 'favorite_border' : 'favorite';
         });
         $(this).toggleClass('favorited');
     });
+
+    // Player More Dropdown Toggle
+    $(document).on('click', '.btn-more', function (e) {
+        e.stopPropagation();
+        const $dropdown = $('.player-more-dropdown');
+        $dropdown.toggleClass('active');
+    });
+
+    // Close More Dropdown when clicking outside
+    $(document).on('click', function (e) {
+        if (!$(e.target).closest('.player-more-container').length) {
+            $('.player-more-dropdown').removeClass('active');
+        }
+    });
+
+    // Handle More Dropdown Actions
+    $(document).on('click', '.dropdown-item', function (e) {
+        e.stopPropagation();
+        const action = $(this).data('action');
+        
+        switch (action) {
+            case 'download':
+                Toast.info('Tính năng tải về đang được phát triển');
+                break;
+            case 'add-to-playlist':
+                Toast.info('Tính năng thêm vào playlist đang được phát triển');
+                break;
+            case 'share':
+                Toast.info('Tính năng chia sẻ đang được phát triển');
+                break;
+            case 'report':
+                Toast.warning('Tính năng báo cáo đang được phát triển');
+                break;
+        }
+        
+        $('.player-more-dropdown').removeClass('active');
+    });
+
+    // colose player more dropdown when clicking outside
+    $(document).on('click', function (e) {
+        if (!$(e.target).closest('.player-more-container').length) {
+            $('.player-more-dropdown').removeClass('active');
+        }
+    });
+
+    // For mobile - expand player
+    $(document).on('click', '.player', function (e) {
+        // Không expand nếu click vào button hoặc controls
+        if ($(e.target).closest('.btn-control, .btn-collapse-player, .progress-slider, .queue-panel, .player-more-dropdown').length) {
+            return;
+        }
+        
+        // Chỉ expand trên mobile
+        if (window.innerWidth <= 576) {
+            $(this).addClass('is-expanded');
+        }
+    });
+
+    // Collapse player button
+    $(document).on('click', '.btn-collapse-player', function (e) {
+        // e.stopPropagation();
+        $('.player').removeClass('is-expanded');
+    });
+
+    // Queue Panel Toggle
+    $(document).on('click', '.btn-queue', function (e) {
+        e.stopPropagation();
+        $('.queue-panel').addClass('active');
+        $('.queue-overlay').addClass('active');
+        renderQueue();
+    });
+
+    // Close Queue Panel
+    $(document).on('click', '.btn-close-queue, .queue-overlay', function () {
+        $('.queue-panel').removeClass('active');
+        $('.queue-overlay').removeClass('active');
+    });
+
+    // Queue Item Click - Play song from queue
+    $(document).on('click', '.queue-item', function () {
+        const songId = parseInt($(this).data('song-id'));
+        if (songId) {
+            const song = songs.find(s => s.id === songId);
+            if (song) {
+                audioManager.playSong(song, audioManager.playlist);
+                renderQueue(); // Re-render to update active state
+            }
+        }
+    });
 }
 
 // Khởi tạo search bar interactions
 function initSearchBar() {
-    $('.search-bar').on('click', function () {
+    // Sử dụng event delegation để tránh mất event khi re-render header
+    $(document).on('click', '.search-bar', function () {
         $('.search-bar-wrapper').addClass('is-expanded');
     });
 
-    $('#btn-close-search-bar').on('click', function () {
+    $(document).on('click', '#btn-close-search-bar', function () {
         $('.search-bar-wrapper').removeClass('is-expanded');
         $('.search-bar-suggestions').removeClass('is-shown');
         $('.search-bar-suggestions').empty();
@@ -308,7 +397,7 @@ function handleSearch(e) {
 // Display search results
 function displaySearchResults(results) {
     const searchBarSuggestions = $('.search-bar-suggestions');
-    let suggestionItems = '<li class="sugestion-label">Gợi ý kết quả</li>';
+    let suggestionItems = '<li class="suggestion-label">Gợi ý kết quả</li>';
     results.forEach(song => {
         suggestionItems += `
             <li class="suggestion-item">
@@ -350,6 +439,135 @@ function playSong(songId) {
         console.log('Playing:', song.title);
     }
 }
+
+// Render Queue Panel
+function renderQueue() {
+    const playlist = audioManager.playlist || [];
+    const currentSong = audioManager.currentSong;
+    const queueList = $('.queue-list');
+    
+    if (playlist.length === 0) {
+        queueList.html(`
+            <div style="text-align: center; padding: 40px 20px; color: var(--text-secondary);">
+                <span class="material-icons-round" style="font-size: 64px; opacity: 0.3;">queue_music</span>
+                <p style="margin-top: 16px;">Chưa có bài hát nào trong danh sách phát</p>
+            </div>
+        `);
+        return;
+    }
+    
+    let queueHTML = '';
+    playlist.forEach((song, index) => {
+        const isActive = currentSong && currentSong.id === song.id ? 'active' : '';
+        queueHTML += `
+            <div class="queue-item ${isActive}" data-song-id="${song.id}">
+                <div class="queue-item-thumbnail">
+                    <img src="${song.image}" alt="${song.title}">
+                    <div class="play-indicator">
+                        <span class="material-icons-round">equalizer</span>
+                    </div>
+                </div>
+                <div class="queue-item-info">
+                    <div class="queue-item-title">${song.title}</div>
+                    <div class="queue-item-artist">${song.artist}</div>
+                </div>
+                <div class="queue-item-actions">
+                    <button class="queue-item-btn" title="Thêm vào yêu thích">
+                        <span class="material-icons-round">favorite_border</span>
+                    </button>
+                    <button class="queue-item-btn" title="Thêm tùy chọn">
+                        <span class="material-icons-round">more_horiz</span>
+                    </button>
+                </div>
+            </div>
+        `;
+    });
+    
+    queueList.html(queueHTML);
+}
+
+// Initialize Notifications and Settings
+function initNotificationsAndSettings() {
+    // Toggle Notifications Dropdown
+    $(document).on('click', '.btn-notification', function (e) {
+        e.stopPropagation();
+        const $dropdown = $('.notifications-dropdown');
+        $dropdown.toggleClass('active');
+        // Close settings if open
+        $('.settings-panel').removeClass('active');
+        $('.settings-overlay').removeClass('active');
+    });
+
+    // Close notifications when clicking outside
+    $(document).on('click', function (e) {
+        if (!$(e.target).closest('.btn-notification, .notifications-dropdown').length) {
+            $('.notifications-dropdown').removeClass('active');
+        }
+    });
+
+    // Mark all as read
+    $(document).on('click', '.btn-mark-read', function (e) {
+        e.stopPropagation();
+        $('.notification-item').removeClass('unread');
+        $('.btn-notification .dot').fadeOut();
+    });
+
+    // Click on notification item
+    $(document).on('click', '.notification-item', function () {
+        $(this).removeClass('unread');
+        // Handle notification click action here
+        console.log('Notification clicked');
+    });
+
+    // Toggle Settings Panel
+    $(document).on('click', '.btn-settings', function (e) {
+        e.stopPropagation();
+        $('.settings-panel').addClass('active');
+        $('.settings-overlay').addClass('active');
+        // Close notifications if open
+        $('.notifications-dropdown').removeClass('active');
+    });
+
+    // Close Settings Panel
+    $(document).on('click', '.btn-close-settings, .settings-overlay', function () {
+        $('.settings-panel').removeClass('active');
+        $('.settings-overlay').removeClass('active');
+    });
+
+    // Logout button
+    $(document).on('click', '.logout-btn', function () {
+        if (confirm('Bạn có chắc chắn muốn đăng xuất?')) {
+            auth.logout();
+            $('.settings-panel').removeClass('active');
+            $('.settings-overlay').removeClass('active');
+            $('.header').html(Header());
+            navigateTo('/');
+        }
+    });
+
+    // Toggle switches
+    $(document).on('change', '.toggle-switch input', function () {
+        const $item = $(this).closest('.setting-item');
+        const label = $item.find('.setting-label').text();
+        const isChecked = $(this).is(':checked');
+        console.log(`${label}: ${isChecked ? 'Bật' : 'Tắt'}`);
+        
+        // Handle specific settings
+        if (label === 'Chế độ tối') {
+            // Toggle dark mode (already dark, could add light mode here)
+            console.log('Dark mode toggle');
+        }
+    });
+
+    // Quality select change
+    $(document).on('change', '.setting-select', function () {
+        const quality = $(this).val();
+        console.log('Chất lượng nhạc:', quality);
+        // Save to localStorage or apply setting
+        localStorage.setItem('musicQuality', quality);
+    });
+}
+
 
 // Add to playlist
 function addToPlaylist(songId) {

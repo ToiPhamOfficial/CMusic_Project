@@ -3,13 +3,21 @@
 export const users = [
     {
         id: 1,
+        name: "Demo",
+        password: "demo123@",
+        email: "demo@example.com",
+        avatar: "/assets/img/default-avatar.png"
+    },
+
+    {
+        id: 2,
         name: "Hoàng Quân",
         password: "hoangquan123@",
         email: "hoang_quan@gmail.com",
         avatar: "/data/users/avatar/hoang_quan_3343.png"
     },
     {
-        id: 2,
+        id: 3,
         name: "Văn Khánh",
         password: "vankhanh456@",
         email: "van_khanh@gmail.com",
@@ -183,7 +191,7 @@ export const albums = [
         artist: "Bruno Mars",
         year: 2023,
         songs: 12,
-        image: "https://www.figma.com/api/mcp/asset/a4da7324-a9a9-404c-aa1b-e687e953f1eb"
+        image: "/data/artists/bruno-mars.png"
     },
     {
         id: 2,
@@ -191,7 +199,47 @@ export const albums = [
         artist: "Alan Walker",
         year: 2018,
         songs: 15,
-        image: "https://www.figma.com/api/mcp/asset/f4cf5d7e-e854-43eb-a073-26d2011ed91e"
+        image: "/data/albums/different-world-alan-walker.png"
+    },
+    {
+        id: 3,
+        title: "Sky Tour",
+        artist: "Sơn Tùng MTP",
+        year: 2022,
+        songs: 10,
+        image: "/data/albums/sky-tour-son-tung-mtp.png"
+    },
+    {
+        id: 4,
+        title: "Lofi Beats",
+        artist: "Various Artists",
+        year: 2021,
+        songs: 20,
+        image: "/data/albums/lofi-beats.png"
+    },
+    {
+        id: 5,
+        title: "Pop Classics",
+        artist: "Various Artists",
+        year: 2020,
+        songs: 18,
+        image: "/data/albums/pop-classics.png"
+    },
+    {
+        id: 6,
+        title: "Indie Vibes",
+        artist: "Various Artists",
+        year: 2019,
+        songs: 22,
+        image: "/data/albums/indie-vibes.png"
+    },
+    {
+        id: 7,
+        title: "Hip Hop Anthems",
+        artist: "Various Artists",
+        year: 2023,
+        songs: 16,
+        image: "/data/albums/hip-hop-anthems.png"
     }
 ];
 

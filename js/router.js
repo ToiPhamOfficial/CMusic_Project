@@ -14,7 +14,6 @@ import RecentlyPlayed_Artist from './views/RecentlyPlayed-Artist.js';
 // Định nghĩa các route (sử dụng History API)
 const routes = {
     '/': Explore,
-    '/explore': Explore,
     '/album': Album,
     '/artist': Artist,
     '/genre': Genre,
@@ -31,7 +30,7 @@ const routes = {
 // Render trang dựa trên route hiện tại
 export function renderRoute(path) {
     const currentPath = path || window.location.pathname;
-    const route = routes[currentPath] || routes['/'];
+    const route = routes[currentPath];
     
     // Lấy app container
     $('.container').html(route());
@@ -51,11 +50,11 @@ function updateActiveNavItem(path) {
 
 // Khởi tạo router
 export function initRouter() {
-    // Xử lý khi người dùng click vào nav-link
-    $(document).on('click', '.nav-link', function(e) {
+    // Xử lý khi người dùng click vào bất kỳ link nào có href bắt đầu bằng /
+    $(document).on('click', 'a[href^="/"]', function(e) {
         const href = $(this).attr('href');
         
-        // Chỉ handle internal links (bắt đầu bằng /)
+        // Prevent default behavior và navigate bằng History API
         if (href && href.startsWith('/')) {
             e.preventDefault();
             navigateTo(href);
@@ -67,8 +66,16 @@ export function initRouter() {
         renderRoute(window.location.pathname);
     });
 
+    // Xử lý redirect /index.html hoặc route không tồn tại về /
+    let currentPath = window.location.pathname;
+    
+    // Nếu là /index.html hoặc route không tồn tại (ngoại trừ /), redirect về /
+    if (currentPath === '/index.html' || (!routes[currentPath] && currentPath !== '/')) {
+        window.history.replaceState({}, '', '/');
+        currentPath = '/';
+    }
     // Render trang đầu tiên khi load
-    renderRoute(window.location.pathname);
+    renderRoute(currentPath);
 }
 
 // Navigate đến trang mới (helper function)

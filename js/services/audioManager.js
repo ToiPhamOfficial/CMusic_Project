@@ -178,22 +178,22 @@ class AudioManager {
         if (!this.currentSong) return;
 
         // Update song info
-        $('.bottom-player-info h3, .player-info h3').text(this.currentSong.title);
-        $('.bottom-player-info span, .player-info span').text(this.currentSong.artist);
+        $('.player-info h3, .player-info h3').text(this.currentSong.title);
+        $('.player-info span, .player-info p').text(this.currentSong.artist);
 
         // Update album cover
-        $('.bottom-player-album img, .player-disc img').attr({
+        $('.player-album img, .player-disc img').attr({
             'src': this.currentSong.image,
             'alt': this.currentSong.title
         });
 
-        $('.bottom-player').css('display', 'flex');
+        $('.player').css('display', 'flex');
         $('.app').css('padding-bottom', '90px');
     }
 
     updatePlayButton() {
         const icon = this.isPlaying ? 'pause_circle' : 'play_circle';
-        $('.bottom-player-controls .btn-play span, .player-controls .play span').text(icon);
+        $('.player-controls .btn-play span, .player-controls .play span').text(icon);
     
     }
 
@@ -208,19 +208,19 @@ class AudioManager {
         $('.progress-slider, .progress-bar').val(percentage);
 
         // Update time display
-        $('.bottom-player-progress .time:first, .player-progress .time:first').text(this.formatTime(currentTime));
-        $('.bottom-player-progress .time:last, .player-progress .time:last').text(this.formatTime(duration));
+        $('.player-progress .time:first, .player-progress .time:first').text(this.formatTime(currentTime));
+        $('.player-progress .time:last, .player-progress .time:last').text(this.formatTime(duration));
     }
 
     updateDuration() {
         if (this.audio.duration) {
-            $('.bottom-player-progress .time:last, .player-progress .time:last').text(this.formatTime(this.audio.duration));
+            $('.player-progress .time:last, .player-progress .time:last').text(this.formatTime(this.audio.duration));
             $('.progress-slider, .progress-bar').attr('max', 100);
         }
     }
 
     updateRepeatButton() {
-        const $btn = $('.bottom-player-controls .btn-control[title="Repeat"]');
+        const $btn = $('.player-controls .btn-control[title="Repeat"]');
         if (this.isRepeat) {
             $btn.addClass('active');
             $btn.find('span').css('color', 'var(--accent-color)');
@@ -231,7 +231,7 @@ class AudioManager {
     }
 
     updateShuffleButton() {
-        const $btn = $('.bottom-player-controls .btn-control[title="Shuffle"]');
+        const $btn = $('.player-controls .btn-control[title="Shuffle"]');
         if (this.isShuffle) {
             $btn.addClass('active');
             $btn.find('span').css('color', 'var(--accent-color)');

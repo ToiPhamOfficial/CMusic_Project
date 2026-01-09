@@ -1,17 +1,21 @@
 export default function Player() {
     return `
-        <div class="bottom-player-left">
-            <div class="bottom-player-album">
-                <img src="https://www.figma.com/api/mcp/asset/d9fc626b-3041-4898-bc9f-bde47efaa68a" alt="Album Cover">
+        <button class="btn-collapse-player" title="Collapse">
+            <span class="material-icons-round">expand_more</span>
+        </button>
+        
+        <div class="player-left">
+            <div class="player-album">
+                <img src="/assets/img/default-player-thumb.png" alt="Album Cover">
             </div>
-            <div class="bottom-player-info">
-                <h3>Sea Of Feelings</h3>
-                <p>Lowx</p>
+            <div class="player-info">
+                <h3>Unknown</h3>
+                <p>Unknown</p>
             </div>
         </div>
         
-        <div class="bottom-player-center">
-            <div class="bottom-player-controls">
+        <div class="player-center">
+            <div class="player-controls">
                 <button class="btn-control" title="Repeat">
                     <span class="material-icons-round">repeat</span>
                 </button>
@@ -28,23 +32,68 @@ export default function Player() {
                     <span class="material-icons-round">shuffle</span>
                 </button>
             </div>
-            <div class="bottom-player-progress">
-                <span class="time">00:58</span>
-                <input type="range" class="progress-slider" min="0" max="173" value="58">
-                <span class="time">02:53</span>
+            <div class="player-progress">
+                <span class="time">00:00</span>
+                <input type="range" class="progress-slider" min="0" max="100" value="0">
+                <span class="time">00:00</span>
             </div>
         </div>
         
-        <div class="bottom-player-right">
+        <div class="player-right">
             <button class="btn-control" title="Favorite">
                 <span class="material-icons-round">favorite_border</span>
             </button>
-            <button class="btn-control" title="More">
-                <span class="material-icons-round">more_horiz</span>
-            </button>
-            <button class="btn-control" title="Queue">
+            <button class="btn-control btn-queue" title="Queue">
                 <span class="material-icons-round">queue_music</span>
             </button>
+            <div class="player-more-container">
+                <button class="btn-control btn-more" title="More">
+                    <span class="material-icons-round">more_horiz</span>
+                </button>
+                
+                <!-- More Dropdown Menu -->
+                <div class="player-more-dropdown">
+                    <div class="dropdown-item" data-action="download">
+                        <span class="material-icons-round">download</span>
+                        <span>Tải về</span>
+                    </div>
+                    <div class="dropdown-item" data-action="add-to-playlist">
+                        <span class="material-icons-round">playlist_add</span>
+                        <span>Thêm vào playlist</span>
+                    </div>
+                    <div class="dropdown-item" data-action="share">
+                        <span class="material-icons-round">share</span>
+                        <span>Chia sẻ</span>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-item" data-action="report">
+                        <span class="material-icons-round">flag</span>
+                        <span>Báo cáo</span>
+                    </div>
+                </div>
+            </div>
         </div>
+        
+        <!-- Queue Panel -->
+        <div class="queue-panel">
+            <div class="queue-header">
+                <h3>Danh sách phát</h3>
+                <button class="btn-close-queue" title="Đóng">
+                    <span class="material-icons-round">close</span>
+                </button>
+            </div>
+            <div class="queue-section">
+                <div class="queue-section-header">
+                    <h4>Tiếp theo</h4>
+                    <span class="queue-subtitle">Từ For You</span>
+                </div>
+                <div class="queue-list">
+                    <!-- Queue items will be rendered here -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Queue Overlay -->
+        <div class="queue-overlay"></div>
     `;
 }

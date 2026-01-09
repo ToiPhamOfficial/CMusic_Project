@@ -51,7 +51,7 @@
   --card-bg: #1a1a21;
   --divider-color: #2d2f39;
   --border-default: #3a3b3b;
-  --border-gray: #4e4e4e;
+  --border-gray: rgba(255, 255, 255, 0.1);
   
   /* Button Background */
   --btn-secondary-bg: #4a4a54;
