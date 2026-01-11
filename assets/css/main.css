@@ -22,6 +22,10 @@
 @import url('components/modal.css');
 @import url('components/login_signup.css');
 @import url('components/toast.css');
+@import url('components/card.css');
+
+/* === 3.5 PAGES === */
+@import url('pages/explore.css');
 
 /* === 4. RESPONSIVE === */
 /* Media queries must come last */
@@ -296,7 +300,7 @@
 
 
 /* ==========================================
-   Favorite
+   Favorite - Playlist
    ========================================== */
 
 /* --- Playlist Hero Section --- */
@@ -361,6 +365,12 @@
 .hero-cover span {
     font-size: 80px;
     color: #fff;
+}
+
+.hero-desc-text {
+    font-size: 14px;
+    font-weight: 800;
+    color: #ccc;
 }
 
 .hero-info {
@@ -748,6 +758,7 @@
     font-size: 1.1rem;
     font-weight: 700;
     color: var(--accent-color);
+    /* #292929 */
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 15px;

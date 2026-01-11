@@ -29,30 +29,15 @@ export default function Favorite() {
                     <div class="col-time"><span class="material-icons-round">schedule</span></div>
                 </div>
 
-                <div class="divider"></div>
-
                 ${songs.map((song, index) => {
-                    // Logic: Bài đầu tiên (index 0) là Active
-                    const isActive = index === 0;
-                    const activeClass = isActive ? 'active' : '';
-
-                    // Logic cột Index: Nếu active hiện icon Play, nếu không hiện số thứ tự
-                    const indexContent = isActive 
-                        ? `<span class="material-icons-round">play_arrow</span>` 
-                        : `#${index + 1}`;
-
-                    // Logic cột Time: Nếu active hiện thêm dấu 3 chấm (...)
-                    const timeContent = isActive
-                        ? `${song.duration} <span class="material-icons-round icon-more">more_horiz</span>`
-                        : `${song.duration}`;
-
-                    // Giả lập dữ liệu Album (vì data cũ chưa có trường album, mình tạm để cứng hoặc dùng Genre)
-                    const albumName = "Water"; 
+                    // Nếu data không có thì fallback text
+                    const albumName = song.album || "Unknown Album"; 
 
                     return `
-                    <div class="track-item ${activeClass}" data-song-id="${song.id}">
+                    <div class="track-item" data-song-id="${song.id}">
                         <div class="col-index">
-                            ${indexContent}
+                            <span class="number">#${index + 1}</span>
+                            <span class="material-icons-round">play_arrow</span>
                         </div>
                         <div class="col-title">
                             <img src="${song.image}" alt="${song.title}" class="track-img">
@@ -61,7 +46,7 @@ export default function Favorite() {
                         <div class="col-artist">${song.artist}</div>
                         <div class="col-album">${albumName}</div>
                         <div class="col-time">
-                            ${timeContent}
+                            ${song.duration} <span class="material-icons-round icon-more">more_horiz</span>
                         </div>
                     </div>
                     `;

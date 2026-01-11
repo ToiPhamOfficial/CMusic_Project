@@ -1,4 +1,4 @@
-import { getPlaylistById } from '../data.js';
+import { getPlaylistById, getSongById } from '../data.js';
 
 export default function PlaylistDetail() {
     //Tự lấy ID từ URL hiện tại (ví dụ: .../artist-detail?id=1)
@@ -9,37 +9,75 @@ export default function PlaylistDetail() {
 
     if (!playlist) return `<h1>Playlist không tồn tại</h1>`;
 
+    const listSongs = playlist.songIds.map(songId => {
+        return getSongById(songId);
+    }).filter(song => song !== undefined); // Lọc bỏ trường hợp bài hát bị xóa (undefined)
+
+    const nothing = listSongs.length === 0 ? `<div class="empty-playlist">Playlist này chưa có bài hát nào</div>` : ``;
+    const header = listSongs.length !== 0 ?
+    `<div class="track-header">
+        <div class="col-index">#</div>
+        <div class="col-title">Tiêu đề</div>
+        <div class="col-artist">Nghệ sĩ</div>
+        <div class="col-album">Album</div>
+        <div class="col-time"><span class="material-icons-round">schedule</span></div>
+    </div>` : ``;
+
     return `
-        <div class="playlist-detail p-4 d-flex">
-            <div class="cover me-4 text-center" style="width: 250px;">
-                <img src="${playlist.image}" class="img-fluid shadow rounded mb-3">
-                <h4 class="fw-bold">${playlist.title}</h4>
-                <p class="text-muted">Tạo bởi: ${playlist.author}</p>
-            </div>
+        <div class="playlist-detail">
             
-            <div class="tracks flex-grow-1">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Tiêu đề</th>
-                            <th>Thời lượng</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Demo Song 1</td>
-                            <td>3:45</td>
-                        </tr>
-                         <tr>
-                            <td>2</td>
-                            <td>Demo Song 2</td>
-                            <td>4:20</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="playlist-hero">
+                <div class="hero-bg-glow"></div> 
+                <div class="hero-cover">
+                    <span class="material-icons-round">favorite</span>
+                </div>
+                
+                <div class="hero-info">
+                    <span class="playlist-subtitle">Playlist: ${playlist.songIds.length} bài</span>
+                    <h1 class="playlist-title">${playlist.name}
+                        <br> 
+                        <span class="hero-desc-text">
+                                Tạo bởi: <strong>${playlist.creator || 'Admin'}</strong>
+                        </span>
+                    </h1>
+                    <button class="btn-play-all">
+                        <span class="material-icons-round">play_arrow</span> Phát tất cả
+                    </button>
+                </div>
             </div>
+
+            <section class="track-list-container">
+
+                ${nothing}
+                ${header}
+                ${listSongs.map((song, index) => {
+                    // Nếu data không có thì fallback text
+                    const albumName = song.album || "Unknown Album"; 
+
+                    return `
+                    <div class="track-item" data-song-id="${song.id}">
+                        <div class="col-index">
+                            <span class="number">#${index + 1}</span>
+                            <span class="material-icons-round">play_arrow</span>
+                        </div>
+                        <div class="col-title">
+                            <img src="${song.image}" alt="${song.title}" class="track-img">
+                            <span class="song-name">${song.title}</span>
+                        </div>
+                        <div class="col-artist">${song.artist}</div>
+                        <div class="col-album">${albumName}</div>
+                        <div class="col-time">
+                            ${song.duration} <span class="material-icons-round icon-more">more_horiz</span>
+                        </div>
+                    </div>
+                    `;
+                }).join('')}
+
+                <div class="see-more">
+                    Xem thêm <span class="material-icons-round">arrow_drop_down</span>
+                </div>
+
+            </section>
         </div>
     `;
 }

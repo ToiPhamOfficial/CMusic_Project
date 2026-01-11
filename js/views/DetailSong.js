@@ -33,7 +33,6 @@ export default function SongDetail() {
             <div class="playlist-hero">
                 <div class="hero-bg-glow"></div> 
                 
-
                 <img class="hero-img" src="${song.image}" alt="">
                 
                 <div class="hero-info">

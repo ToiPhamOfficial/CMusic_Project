@@ -243,7 +243,10 @@ function initLoginSignupModal() {
 // Khởi tạo bottom player controls
 function initPlayerControls() {
     // Play/Pause button
-    $(document).on('click', '.player-controls .btn-play, .player-controls .play, .suggestion-item div button', function () {
+    $(document).on('click', '.player-controls .btn-play, .player-controls .play, .suggestion-item div button, .btn-play', function () {
+        $(this).find('span').text(function (i, text) {
+            return text === 'play_arrow' ? 'pause' : 'play_arrow';
+        });
         audioManager.togglePlay();
     });
 
@@ -558,6 +561,13 @@ function initNotificationsAndSettings() {
             $('.header').html(Header());
             navigateTo('/');
         }
+    });
+
+    // Go to Settings Page
+    $(document).on('click', '.setting-item[data-action="goto-settings"]', function () {
+        $('.settings-panel').removeClass('active');
+        $('.settings-overlay').removeClass('active');
+        navigateTo('/settings');
     });
 
     // Toggle switches
