@@ -181,14 +181,15 @@
 }
 
 /* ==========================================
-   SONG ITEM (List View)
+   SONG ITEM (List View) - BEM Structure
    ========================================== */
 .song-item {
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 35px minmax(0, 2fr) minmax(0, 1fr) 80px;
     gap: var(--space-md);
-    padding: var(--space-sm);
-    border-radius: var(--radius-md);
+    align-items: center;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-sm);
     cursor: pointer;
     transition: background var(--transition-fast);
 }
@@ -197,30 +198,43 @@
     background: var(--hover-bg);
 }
 
-.song-index {
+/* Column 1: Index */
+.song-item__index {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.song-item__number {
     font-size: var(--fs-body);
     color: var(--text-secondary);
-    width: 24px;
-    text-align: center;
     font-weight: 500;
 }
 
-.song-thumbnail {
+/* Column 2: Title (Thumbnail + Name) */
+.song-item__info {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    min-width: 0;
+}
+
+.song-item__thumbnail {
     position: relative;
-    width: 48px;
-    height: 48px;
+    width: 70px;
+    height: 70px;
     border-radius: var(--radius-sm);
     overflow: hidden;
     flex-shrink: 0;
 }
 
-.song-thumbnail img {
+.song-item__image {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.song-play-btn {
+.song-item__play-btn {
     position: absolute;
     top: 0;
     left: 0;
@@ -236,53 +250,79 @@
     transition: opacity var(--transition-fast);
 }
 
-.song-item:hover .song-play-btn {
+.song-item:hover .song-item__play-btn {
     opacity: 1;
 }
 
-.song-play-btn span {
+.song-item__play-btn span {
     font-size: 24px;
     color: white;
 }
 
-.song-info {
-    flex: 1;
-    min-width: 0;
-}
-
-.song-title {
+.song-item__title {
     font-size: var(--fs-body);
     font-weight: 500;
     color: var(--text-primary);
-    margin-bottom: var(--space-xs);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-.song-artist {
-    font-size: var(--fs-label);
-    color: var(--text-secondary);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.song-duration {
-    font-size: var(--fs-label);
-    color: var(--text-secondary);
-    margin: 0 var(--space-md);
-}
-
-.song-actions {
+.song-item__text {
     display: flex;
-    gap: var(--space-xs);
-    opacity: 0;
-    transition: opacity var(--transition-fast);
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+    flex: 1;
 }
 
-.song-item:hover .song-actions {
-    opacity: 1;
+.song-item__artist-mobile {
+    font-size: var(--fs-label);
+    color: var(--text-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: none; /* Ẩn mặc định, chỉ hiện trên mobile */
+}
+
+/* Column 3: Artist */
+.song-item__artist {
+    min-width: 0;
+}
+
+.song-item__artist-name {
+    font-size: var(--fs-label);
+    color: var(--text-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Column 4: Duration */
+.song-item__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--space-sm);
+}
+
+.song-item__time {
+    font-size: var(--fs-label);
+    color: var(--text-secondary);
+}
+
+.song-item__actions .btn-favorite,
+.song-item__actions .btn-more {
+    display: none;
+}
+
+.song-item:hover .song-item__actions .btn-favorite,
+.song-item:hover .song-item__actions .btn-more {
+    display: flex;
+}
+
+.song-item:hover .song-item__time {
+    display: none;
 }
 
 /* ==========================================
@@ -489,5 +529,17 @@
     .chart-rank {
         width: 32px;
         font-size: var(--fs-body);
+    }
+
+    .song-item {
+        grid-template-columns: 35px minmax(0, 1fr) 50px;
+    }
+
+    .song-item__artist, .song-item__time {
+        display: none;
+    }
+
+    .song-item__artist-mobile {
+        display: block; /* Hiển thị artist trên mobile */
     }
 }

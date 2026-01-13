@@ -53,6 +53,7 @@
   --border-gray: rgba(255, 255, 255, 0.1);
   
   /* Button Background */
+  --btn-primary-bg: #1a1a21;
   --btn-secondary-bg: #4a4a54;
   --btn-play-bg: rgba(137, 137, 137, 0.15);
   
