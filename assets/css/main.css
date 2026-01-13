@@ -26,6 +26,8 @@
 @import url('pages/explore.css');
 @import url('pages/artists.css');
 @import url('pages/favorites.css');
+@import url('pages/genres.css');
+@import url('pages/recently.css');
 
 /* === 4. RESPONSIVE === */
 /* Media queries must come last */

@@ -69,11 +69,55 @@ export function AlbumCard(album) {
     `;
 }
 
-export function SongCard(song) {
+export function SongItem(song, index = null) {
     return `
-        <div class="card song-card" data-song-id="${song.id}">
-            <div class="card-cover">
-                <img src="${song.image}" alt="${song.title}" loading="lazy">
+        <div class="song-item" data-song-id="${song.id}">
+            <div class="song-item__index">
+                ${index !== null ? `<span class="song-item__number">${index}</span>` : ''}
+            </div>
+            <div class="song-item__info">
+                <div class="song-item__thumbnail">
+                    <img class="song-item__image" src="${song.image}" alt="${song.title}" loading="lazy">
+                    <button class="song-item__play-btn btn-play" title="Phát">
+                        <span class="material-icons-round">play_arrow</span>
+                    </button>
+                </div>
+                <div class="song-item__text">
+                    <h4 class="song-item__title">${song.title}</h4>
+                    <p class="song-item__artist-mobile">${song.artist}</p>
+                </div>
+            </div>
+            <div class="song-item__artist">
+                <p class="song-item__artist-name">${song.artist}</p>
+            </div>
+            <div class="song-item__actions">
+                <span class="song-item__time">${song.duration}</span>
+                <button class="btn-icon btn-favorite" title="Yêu thích">
+                    <span class="material-icons-round">favorite_border</span>
+                </button>
+                <button class="btn-icon btn-more" title="Thêm">
+                    <span class="material-icons-round">more_horiz</span>
+                </button>
+            </div>
+        </div>
+    `;
+}
+
+export function PlaylistCard(playlist) {
+    const coverStyle = playlist.image 
+        ? `background-image: url('${playlist.image}');`
+        : playlist.gradient 
+            ? `background: ${playlist.gradient};`
+            : '';
+    
+    const coverContent = playlist.image 
+        ? `<img src="${playlist.image}" alt="${playlist.name}" loading="lazy">`
+        : `<span class="material-icons-round">${playlist.icon || 'queue_music'}</span>`;
+    
+    return `
+        <div class="card playlist-card" data-playlist-id="${playlist.id}">
+            <div class="card-cover playlist-cover" style="${coverStyle}">
+                ${coverContent}
                 <div class="card-overlay">
                     <button class="card-play-btn btn-play" title="Phát">
                         <span class="material-icons-round">play_arrow</span>
@@ -81,8 +125,8 @@ export function SongCard(song) {
                 </div>
             </div>
             <div class="card-info">
-                <h3 class="card-title">${song.title}</h3>
-                <p class="card-subtitle">${song.artist}</p>
+                <h3 class="card-title">${playlist.name}</h3>
+                <p class="card-subtitle">${playlist.songCount} bài hát</p>
             </div>
         </div>
     `;

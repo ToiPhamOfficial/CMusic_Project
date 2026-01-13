@@ -1,4 +1,4 @@
-/* Import components */
+/* Import components event handlers */
 import Sidebar from './components/Sidebar.js';
 import Player from './components/Player.js';
 import Header from './components/Header.js';
@@ -16,6 +16,9 @@ import auth from './services/auth.js';
 import audioManager from './services/audioManager.js';
 import Playlist from './views/Playlist.js';
 
+/* Import views event handlers */
+import { initRecentlyPage } from './views/Recently.js';
+
 // Khởi tạo app
 $(document).ready(function () {
     // Render các components tĩnh
@@ -30,8 +33,11 @@ $(document).ready(function () {
     // Init sidebar toggle
     initSidebarToggle();
 
-    // Khởi tạo login signup modal interactions
+    // Init login/signup modal
     initLoginSignupModal();
+
+    // Init Recently page
+    initRecentlyPage();
 
     // Set playlist mặc định cho audio manager
     audioManager.setPlaylist(songs);
@@ -126,10 +132,10 @@ function initEventListeners() {
     });
 
     // Xử lý click nút Xem thêm / Thu gọn
-    $(document).on('click', '.btn-toggle-lyrics', function() {
+    $(document).on('click', '.btn-toggle-lyrics', function () {
         const $content = $('#lyric-content');
         const $btn = $(this);
-        
+
         if ($content.hasClass('collapsed')) {
             // Đang đóng -> Mở ra
             $content.removeClass('collapsed').addClass('expanded');
@@ -232,7 +238,7 @@ function initArtistsDropdown() {
     let currentOpenDropdown = null;
 
     // Toggle dropdown khi click vào icon more
-    $(document).on('click', '.js-dropdown-trigger', function(e) {
+    $(document).on('click', '.js-dropdown-trigger', function (e) {
         e.stopPropagation();
         const $wrapper = $(this).closest('.page-artists__dropdown-wrapper');
         const $dropdown = $wrapper.find('.page-artists__dropdown');
@@ -248,7 +254,7 @@ function initArtistsDropdown() {
     });
 
     // Đóng dropdown khi click bên ngoài
-    $(document).on('click', function(e) {
+    $(document).on('click', function (e) {
         if (currentOpenDropdown && !$(e.target).closest('.page-artists__dropdown-wrapper').length) {
             currentOpenDropdown.removeClass('page-artists__dropdown--active');
             currentOpenDropdown = null;
@@ -256,7 +262,7 @@ function initArtistsDropdown() {
     });
 
     // Xử lý các action trong dropdown
-    $(document).on('click', '.page-artists__dropdown-item', function(e) {
+    $(document).on('click', '.page-artists__dropdown-item', function (e) {
         e.stopPropagation();
         const action = $(this).data('action');
         const $track = $(this).closest('.page-artists__track');
@@ -364,7 +370,7 @@ function initLoginSignupModal() {
             const password = $('#login-password').val().trim();
             const loginResult = auth.handleLogin(email, password);
             Toast[loginResult.type](loginResult.message);
-            
+
             if (loginResult.success) {
                 // Đóng modal
                 $modal.removeClass('is-shown');
@@ -373,7 +379,7 @@ function initLoginSignupModal() {
                 // Reset form
                 $(this)[0].reset();
             }
-            
+
         } else {
             // Handle signup
             const name = $('#signup-name').val().trim();
@@ -382,7 +388,7 @@ function initLoginSignupModal() {
             const confirmPassword = $('#signup-confirm-password').val().trim();
             const signupResult = auth.handleSignup(name, email, password, confirmPassword);
             Toast[signupResult.type](signupResult.message);
-            
+
             if (signupResult.success) {
                 // Đóng modal
                 $modal.removeClass('is-shown');
@@ -398,7 +404,8 @@ function initLoginSignupModal() {
 // Khởi tạo bottom player controls
 function initPlayerControls() {
     // Play/Pause button
-    $(document).on('click', '.player-controls .btn-play, .player-controls .play, .suggestion-item div button, .btn-play', function () {
+    $(document).on('click', '.player-controls .btn-play, .player-controls .play, .suggestion-item div button, .btn-play', function (e) {
+        e.stopPropagation(); // Ngăn chặn sự kiện nổi bọt
         $(this).find('span').text(function (i, text) {
             return text === 'play_arrow' ? 'pause' : 'play_arrow';
         });
@@ -457,7 +464,7 @@ function initPlayerControls() {
     $(document).on('click', '.dropdown-item', function (e) {
         e.stopPropagation();
         const action = $(this).data('action');
-        
+
         switch (action) {
             case 'download':
                 Toast.info('Tính năng tải về đang được phát triển');
@@ -472,7 +479,7 @@ function initPlayerControls() {
                 Toast.warning('Tính năng báo cáo đang được phát triển');
                 break;
         }
-        
+
         $('.player-more-dropdown').removeClass('active');
     });
 
@@ -489,7 +496,7 @@ function initPlayerControls() {
         if ($(e.target).closest('.btn-control, .btn-collapse-player, .progress-slider, .queue-panel, .player-more-dropdown').length) {
             return;
         }
-        
+
         // Chỉ expand trên mobile
         if (window.innerWidth <= 576) {
             $(this).addClass('is-expanded');
@@ -618,7 +625,7 @@ function renderQueue() {
     const playlist = audioManager.playlist || [];
     const currentSong = audioManager.currentSong;
     const queueList = $('.queue-list');
-    
+
     if (playlist.length === 0) {
         queueList.html(`
             <div style="text-align: center; padding: 40px 20px; color: var(--text-secondary);">
@@ -628,7 +635,7 @@ function renderQueue() {
         `);
         return;
     }
-    
+
     let queueHTML = '';
     playlist.forEach((song, index) => {
         const isActive = currentSong && currentSong.id === song.id ? 'active' : '';
@@ -655,7 +662,7 @@ function renderQueue() {
             </div>
         `;
     });
-    
+
     queueList.html(queueHTML);
 }
 
@@ -731,7 +738,7 @@ function initNotificationsAndSettings() {
         const label = $item.find('.setting-label').text();
         const isChecked = $(this).is(':checked');
         console.log(`${label}: ${isChecked ? 'Bật' : 'Tắt'}`);
-        
+
         // Handle specific settings
         if (label === 'Chế độ tối') {
             // Toggle dark mode (already dark, could add light mode here)
