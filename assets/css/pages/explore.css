@@ -443,7 +443,7 @@
 
 
 /* Songs list*/
-.song-list {
+/* .song-list {
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
@@ -468,7 +468,7 @@
     height: 60px;
     border-radius: var(--radius-md);
     object-fit: cover;
-}
+} */
 
 .song-details {
     flex: 1;

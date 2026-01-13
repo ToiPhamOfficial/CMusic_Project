@@ -4,9 +4,9 @@ import { GenreCard } from '../components/Card.js';
 
 export default function Genres() {
     return `
-        <section class="page-heading page-genres__heading">
-            <h1 class="page-genres__title">Khám phá thể loại</h1>
-            <p class="page-genres__subtitle">Tìm kiếm tâm trạng âm nhạc của bạn</p>
+        <section class="page__heading page-genres__heading">
+            <h1 class="page__title page-genres__title">Khám phá thể loại</h1>
+            <p class="page__subtitle page-genres__subtitle">Tìm kiếm tâm trạng âm nhạc của bạn</p>
         </section>
 
         <!-- Hot Genres Section -->

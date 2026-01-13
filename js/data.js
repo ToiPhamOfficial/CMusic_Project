@@ -498,6 +498,14 @@ export const lofiAlbums = [
     }
 ];
 
+// Recntly data
+export const recentlyData = {
+    songsIds: [1, 5, 3, 8, 2],
+    playlists: [1],
+    albums: [3, 1],
+    artists: [1, 3]
+};
+
 // Helper functions để lấy dữ liệu
 export function getSongById(id) {
     return songs.find(song => song.id === id);
@@ -525,7 +533,7 @@ export function getTopArtists(limit = 5) {
 
 export function searchSongs(query) {
     const lowerQuery = query.toLowerCase();
-    return songs.filter(song => 
+    return songs.filter(song =>
         song.title.toLowerCase().includes(lowerQuery) ||
         song.artist.toLowerCase().includes(lowerQuery)
     );
