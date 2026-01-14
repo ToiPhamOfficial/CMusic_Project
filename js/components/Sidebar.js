@@ -68,7 +68,7 @@ export default function Sidebar() {
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/albums-saved" class="nav-link">
+                            <a href="/albums-saved" class="nav-link" data-need-login="true">
                                 <span class="material-icons-round">
                                     book
                                 </span>
@@ -76,7 +76,7 @@ export default function Sidebar() {
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/favorites" class="nav-link">
+                            <a href="/favorites" class="nav-link" data-need-login="true">
                                 <span class="material-icons-round">
                                     favorite
                                 </span>
@@ -93,7 +93,7 @@ export default function Sidebar() {
                     <h3 class="nav-title">DANH SÁCH PHÁT</h3>
                     <ul class="nav-list">
                         <li class="nav-item">
-                            <a href="/playlist/new" class="nav-link">
+                            <a class="nav-link" data-need-login="true">
                                 <span class="material-icons-round">
                                     add_circle
                                 </span>
@@ -127,4 +127,18 @@ export default function Sidebar() {
                     </ul>
                 </div>
             </div>`;
+}
+
+export function initSidebarToggle() {
+    // Sử dụng event delegation để tránh mất event khi re-render header
+    $(document).on('click', '.btn-menu, #btn-close-sidebar', function () {
+        $('.sidebar').toggleClass('is-active');
+        $('.overlay').toggleClass('is-open');
+    });
+
+    // Đóng sidebar khi bấm vào overlay
+    $(document).on('click', '.overlay', function () {
+        $('.sidebar').removeClass('is-active');
+        $(this).removeClass('is-open');
+    });
 }

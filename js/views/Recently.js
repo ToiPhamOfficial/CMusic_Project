@@ -103,7 +103,7 @@ export default function Recently() {
     `
 }
 
-export function initRecentlyPage() {
+export function initRecentlyPageEvents() {
     // Sử dụng event delegation để gắn sự kiện vào document
     // Điều này đảm bảo sự kiện vẫn hoạt động khi page được render lại
     $(document).on('click', '.tabs__tab-item', function() {
