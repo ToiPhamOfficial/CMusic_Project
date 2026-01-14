@@ -14,7 +14,6 @@ import { songs, searchSongs } from './data.js';
 /* Import services */
 import auth from './services/auth.js';
 import audioManager from './services/audioManager.js';
-import Playlist from './views/Playlist.js';
 
 /* Import views event handlers */
 import { initRecentlyPage } from './views/Recently.js';
