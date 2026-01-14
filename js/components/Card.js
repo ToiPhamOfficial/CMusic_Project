@@ -69,6 +69,18 @@ export function AlbumCard(album) {
     `;
 }
 
+export function HeaderSongItem(song, index = null) {
+    return `
+        <div class="song-item__header">
+            <div class="song-item__header-col song-item__header-col--index">#</div>
+            <div class="song-item__header-col song-item__header-col--title">Bài hát</div>
+            <div class="song-item__header-col song-item__header-col--artist">Nghệ sĩ</div>
+            <div class="song-item__header-col song-item__header-col--actions">Thời gian</div>
+        </div>
+        <div class="divider"></div>
+    `
+}
+
 export function SongItem(song, index = null) {
     return `
         <div class="song-item" data-song-id="${song.id}">

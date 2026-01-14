@@ -1,9 +1,13 @@
 import { getAlbumById, getPlaylistById, getArtistById, getSongById } from '../data.js';
 import { AlbumCard, PlaylistCard, ArtistCard, SongItem } from '../components/Card.js';
 
+
+// Tên key để lưu trong LocalStorage
+const STORAGE_KEY = 'music_app_recent_history';
+
 // Hàm lấy dữ liệu lịch sử (Ưu tiên LocalStorage, nếu không có thì trả về mảng rỗng)
 function getRecentData() {
-    const storedData = localStorage.getItem('currentUser');
+    const storedData = localStorage.getItem(STORAGE_KEY);
     if (storedData) {
         return JSON.parse(storedData);
     }
@@ -195,5 +199,5 @@ export function addToHistory(type, id) {
     }
 
     // 6. Lưu lại vào LocalStorage
-    localStorage.setItem('currentUser', JSON.stringify(currentHistory));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(currentHistory));
 }
