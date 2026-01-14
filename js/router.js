@@ -14,13 +14,13 @@ import AlbumDetail from './views/DetailAlbum.js';
 
 // Định nghĩa các route (sử dụng History API)
 const routes = {
-    // '/': Explore,
-    '/': Recently, // Mặc định vào trang Recently Played
+    '/': Explore,
+    // '/': Recently, // Mặc định vào trang Recently Played
     '/albums': Albums,
     '/artists': Artists,
     '/genres': Genres,
     '/playlist': Playlist,
-    '/recently': Recently,
+    '/recent': Recently,
     '/favorites': Favorite,
     '/archive': Explore,
     '/profile': Profile,
