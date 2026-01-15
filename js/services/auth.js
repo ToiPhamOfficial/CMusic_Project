@@ -122,13 +122,9 @@ class Auth {
                 password,
                 avatar: this.getDefaultAvatar(),
                 createdAt: new Date().toISOString(),
-                follower: 0,
                 followedArtists: [],
-                favorites: [],
-                albums: [],
-                playlists: [],
-                artists: [],
-                songsIds: []
+                favoriteSongs: [],
+                albumsSaved: []
             };
             
             users.push(newUser);
