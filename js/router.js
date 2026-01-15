@@ -12,6 +12,7 @@ import ArtistDetail from './views/DetailArtist.js';
 import PlaylistDetail from './views/DetailPlaylist.js';
 import SongDetail from './views/DetailSong.js';
 import AlbumDetail from './views/DetailAlbum.js';
+import GenreDetail from './views/DetailGenre.js';
 
 // Định nghĩa các route (sử dụng History API)
 const routes = {
@@ -28,7 +29,8 @@ const routes = {
     '/artist-detail': ArtistDetail, // Trang chi tiết (Tên khác đi cho đỡ nhầm)
     '/playlist-detail': PlaylistDetail,
     '/song-detail': SongDetail,
-    '/album-detail': AlbumDetail
+    '/album-detail': AlbumDetail,
+    '/genre-detail': GenreDetail
 };
 
 // Render trang dựa trên route hiện tại

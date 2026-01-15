@@ -13,10 +13,10 @@ function getRecentData() {
     }
     // Cấu trúc mặc định nếu chưa có lịch sử
     return {
-        albums: [],
-        playlists: [],
-        artists: [],
-        songsIds: []
+        albums: [1, 2],
+        playlists: [1, 2],
+        artists: [1, 2],
+        songsIds: [1, 2]
     };
 }
 

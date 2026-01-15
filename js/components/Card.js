@@ -17,7 +17,7 @@ export function ArtistCard(artist) {
 
 export function GenreCard(genre) {
     return `
-        <div class="card genre-card" data-genre-id="${genre.id}" style="background-color: ${genre.color};">
+        <div class="card genre-card" data-route="/genre-detail?id=${genre.id}" style="background-color: ${genre.color};">
             <h3 class="genre-name">${genre.name}</h3>
         </div>
     `;
@@ -127,7 +127,7 @@ export function PlaylistCard(playlist) {
         : `<span class="material-icons-round">${playlist.icon || 'queue_music'}</span>`;
     
     return `
-        <div class="card playlist-card" data-playlist-id="${playlist.id}">
+        <div class="card playlist-card" data-route="/playlist-detail?id=${playlist.id}">
             <div class="card-cover playlist-cover" style="${coverStyle}">
                 ${coverContent}
                 <div class="card-overlay">
